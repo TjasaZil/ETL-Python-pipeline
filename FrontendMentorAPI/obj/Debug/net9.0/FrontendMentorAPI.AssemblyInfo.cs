@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FrontendMentorAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c84da323b9ddf5729d9f47e3d7c42178c6924598")]
 [assembly: System.Reflection.AssemblyProductAttribute("FrontendMentorAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FrontendMentorAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
