@@ -1,5 +1,5 @@
 product_id,name,category,price
-1,Cranberry Pecan Granola,Food - Breakfast Foods,3.99
+1,Cranberry pecan   Granola,Food -     Breakfast foods,3.99
 2,,Kitchen,10.99
 3,Coconut Granola,Food - Snacks,4.19
 4,Arcade Game Machine,Gaming,299.99
@@ -16,20 +16,20 @@ product_id,name,category,price
 15,Pet Reflective Vest,Pets,18.99
 16,Peanut Butter Granola,Food - Breakfast,4.99
 ,Fashionable Belt Bag,Accessories,34.99
-18,Sweet Pea Hummus,Food - Dips,4.29
+18,Sweet Pea Hummus,Food - dips,4.29
 19,Portable Massage Table,Health,199.99
 20,Ramen Noodle Soup Cups,Food - Prepared Meals,1.29
 21,Instant Camera,Photography,89.99
-22,Electric Milk Frother,Kitchen,19.99
+22,Electric Milk Frother,kitchen,19.99
 23,Blueberry Oatmeal Cups,Food - Breakfast,3.29
 24,Organic Tomato Soup,Food - Canned Goods,3.79
 25,Spicy Roasted Nuts,Food - Snacks,4.99
 26,Honey Roasted Peanuts,Food - Snacks,3.19
-27,Cilantro Lime Rice,Food - Grains,2.99
+27,cilantro Lime Rice,Food - Grains,2.99
 28,Chilli Lime Corn on the Cob,Food - Vegetable,1.99
 29,Outdoor Camping Lantern,Outdoor,34.99
 30,Brownie Bites,Food - Baked Goods,4.99
-31,Compact Umbrella,Accessories,12.99
+31,Compact    Umbrella,Accessories,12.99
 32,Coconut Cashew Yogurt,Food - Dairy Alternatives,1.99
 33,Stylish Wide-Leg Trousers,Clothing - Bottoms,59.99
 34,Children's Art Set,Toys,34.99
@@ -62,6 +62,7 @@ product_id,name,category,price
 61,Pumpkin Spice Muffins,Food - Bakery,3.99
 62,Savory Oatmeal Cups,Food - Breakfast,1.99
 63,Dark Chocolate Almond Butter Cups,Food - Snacks,4.99
+91,Silicone Stretch Lids,Kitchen,14.99
 64,Puzzle Game Set,Toys,34.99
 65,Solar Garden Lights,Outdoor,39.99
 66,Biodegradable Dog Waste Bags,Pets,14.99
@@ -71,13 +72,13 @@ product_id,name,category,price
 70,Vegetable Lasagna,Food - Frozen Foods,6.99
 71,Wireless HDMI Receiver,Electronics,49.99
 72,Hiking Gaiters,Outdoor,29.99
-73,Rustic Wooden Picture Frame,Home,19.99
+73,,Home,19.99
 74,Reversible Comforter Set,Home,89.99
 75,,Food - Prepared Foods,8.99
 76,Sweet and Sour Sauce,Food - Condiments,2.79
 77,Vegetable Potstickers,Food - Frozen Food,5.99
-78,Beef Jerky,Food - Snacks,5.99
-79,Ice Cube Tray with Lid,Kitchen,10.99
+78,beef Jerky,Food - Snacks,5.99
+79,Ice Cube TrAy with Lid,kitchen,10.99
 80,Air Mattress,Outdoor,49.99
 81,Portable Jump Starter,Automotive,59.99
 82,Mediterranean Couscous,Food - Grains,3.59
@@ -88,7 +89,7 @@ product_id,name,category,price
 87,Granola Cereal,Food - Breakfast,4.49
 88,Savory Pumpkin Soup,Food - Soups,3.89
 89,Honey Roasted Almonds,Food - Snacks,4.99
-90,Personal Blender with Travel Cup,Kitchen,39.99
+90,Personal Blender with Travel cup,Kitchen,39.99
 91,Silicone Stretch Lids,Kitchen,14.99
 92,Dried Apricots,Food - Dried Fruits,3.79
 93,Wireless Induction Charger,Electronics,19.99
@@ -105,19 +106,20 @@ product_id,name,category,price
 104,Phone Screen Protector,Accessories,12.99
 105,Chipotle Black Bean Burger,Food - Meats,4.99
 106,Almond Crunch Granola Bars,Food - Snacks,3.49
-107,Truffle Parmesan Fries,Food - Snacks,4.99
+107,truffle Parmesan Fries,Food - Snacks,4.99
 108,Peanut Butter Banana Smoothie Mix,Food - Beverages,4.49
 109,Wireless Security Camera,Home,109.99
 110,Electric Skillet,Kitchen,49.99
 111,Garlic Parmesan Wings,Food - Frozen Foods,8.99
 112,Indestructible Dog Toy,Pets,15.99
-113,Snap-On Tupperware Set,Kitchen,34.99
+113,Snap-On     Tupperware Set,Kitchen,34.99
 114,Chickpea Snack Mix,Food - Snacks,3.49
 115,,Smart Home,34.99
 116,Pineapple Salsa,Food - Condiments,4.29
 117,V-Neck Sweater,Clothing - Tops,49.99
 118,Wooden Blocks,Toys,24.99
 119,Smartphone Camera Lens Kit,Photography,19.99
+216,Infrared Space Heater,Home Appliances,99.99
 120,Coconut Chia Pudding,Food - Dairy,3.49
 121,Watercolor Brush Pens,Art Supplies,19.99
 122,Berries Medley,Food - Produce,6.99
@@ -131,11 +133,12 @@ product_id,name,category,price
 130,Sun-Dried Tomato Pesto,Food - Condiments,4.49
 131,Indian Curry Sauce,Food - Condiments,
 132,Yoga Strap,Fitness,12.99
-133,Almond Coconut Granola,Food - Breakfast Foods,3.99
+133,Almond Coconut Granola,,3.99
 134,Rechargeable Hand Warmer,Accessories,22.99
 135,Yoga Strap,Fitness,12.99
 136,Pasta Maker Machine,Kitchen,59.99
 137,Portable Water Filter,Outdoor,29.99
+91,Silicone Stretch Lids,Kitchen,14.99
 138,Pork Chops,Food - Meat,9.49
 139,Trackpad for Laptop,Accessories,49.99
 140,High-Speed Blender,Kitchen,99.99
@@ -146,6 +149,7 @@ product_id,name,category,price
 145,Rice Cakes,Food - Snacks,2.29
 146,Lightweight Travel Backpack,Travel,39.99
 147,Stainless Steel Mixing Bowls,Kitchen,29.99
+216,Infrared Space Heater,Home Appliances,99.99
 148,Salsa Verde,Food - Condiments,3.49
 149,,Clothing - Footwear,99.99
 150,Personal Blender with Travel Cup,Kitchen,39.99
@@ -213,6 +217,7 @@ product_id,name,category,price
 ,Watercolor Brush Pens,Art Supplies,19.99
 213,Electric Kettle,Kitchen,39.99
 214,Maple Almond Granola,Food - Breakfast,5.49
+199,Chocolate Chip Cookie Dough,Food - Baking,5.49
 215,Scent Diffuser,Home,34.99
 216,Infrared Space Heater,Home Appliances,99.99
 217,Wrist Support Brace,Health,19.99
