@@ -62,6 +62,7 @@ product_id,name,category,price
 61,Pumpkin Spice Muffins,Food - Bakery,3.99
 62,Savory Oatmeal Cups,Food - Breakfast,1.99
 63,Dark Chocolate Almond Butter Cups,Food - Snacks,4.99
+91,Silicone Stretch Lids,Kitchen,14.99
 64,Puzzle Game Set,Toys,34.99
 65,Solar Garden Lights,Outdoor,39.99
 66,Biodegradable Dog Waste Bags,Pets,14.99
@@ -71,7 +72,7 @@ product_id,name,category,price
 70,Vegetable Lasagna,Food - Frozen Foods,6.99
 71,Wireless HDMI Receiver,Electronics,49.99
 72,Hiking Gaiters,Outdoor,29.99
-73,Rustic Wooden Picture Frame,Home,19.99
+73,,Home,19.99
 74,Reversible Comforter Set,Home,89.99
 75,,Food - Prepared Foods,8.99
 76,Sweet and Sour Sauce,Food - Condiments,2.79
@@ -118,6 +119,7 @@ product_id,name,category,price
 117,V-Neck Sweater,Clothing - Tops,49.99
 118,Wooden Blocks,Toys,24.99
 119,Smartphone Camera Lens Kit,Photography,19.99
+216,Infrared Space Heater,Home Appliances,99.99
 120,Coconut Chia Pudding,Food - Dairy,3.49
 121,Watercolor Brush Pens,Art Supplies,19.99
 122,Berries Medley,Food - Produce,6.99
@@ -131,11 +133,12 @@ product_id,name,category,price
 130,Sun-Dried Tomato Pesto,Food - Condiments,4.49
 131,Indian Curry Sauce,Food - Condiments,
 132,Yoga Strap,Fitness,12.99
-133,Almond Coconut Granola,Food - Breakfast Foods,3.99
+133,Almond Coconut Granola,,3.99
 134,Rechargeable Hand Warmer,Accessories,22.99
 135,Yoga Strap,Fitness,12.99
 136,Pasta Maker Machine,Kitchen,59.99
 137,Portable Water Filter,Outdoor,29.99
+91,Silicone Stretch Lids,Kitchen,14.99
 138,Pork Chops,Food - Meat,9.49
 139,Trackpad for Laptop,Accessories,49.99
 140,High-Speed Blender,Kitchen,99.99
@@ -146,6 +149,7 @@ product_id,name,category,price
 145,Rice Cakes,Food - Snacks,2.29
 146,Lightweight Travel Backpack,Travel,39.99
 147,Stainless Steel Mixing Bowls,Kitchen,29.99
+216,Infrared Space Heater,Home Appliances,99.99
 148,Salsa Verde,Food - Condiments,3.49
 149,,Clothing - Footwear,99.99
 150,Personal Blender with Travel Cup,Kitchen,39.99
@@ -213,6 +217,7 @@ product_id,name,category,price
 ,Watercolor Brush Pens,Art Supplies,19.99
 213,Electric Kettle,Kitchen,39.99
 214,Maple Almond Granola,Food - Breakfast,5.49
+199,Chocolate Chip Cookie Dough,Food - Baking,5.49
 215,Scent Diffuser,Home,34.99
 216,Infrared Space Heater,Home Appliances,99.99
 217,Wrist Support Brace,Health,19.99

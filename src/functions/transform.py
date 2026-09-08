@@ -21,7 +21,7 @@ def iso_country_code(df):
 #standardizes the date format
 def standardize_date_format(df):
     try:
-        df["created_at"] = pd.to_datetime(df["created_at"])
+        df["created_at"] = pd.to_datetime(df["created_at"], dayfirst=True, format="%d/%m/%Y")
         logger.info(f"Changed the date format of the data")
         return df
     except Exception as e:
@@ -31,7 +31,7 @@ def standardize_date_format(df):
 def trim_whitespace(df):
     try:
         for col in df.columns:
-            if col == 'name' or col == 'category':
+            if col == 'name' or col == 'category' or col == 'country':
                 df[col] = df[col].str.split().str.join(" ").str.title()
 
         logger.info(f"Removed the white space from strings")
