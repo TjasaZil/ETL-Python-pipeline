@@ -1,16 +1,16 @@
 product_id,name,category,price
-1,Cranberry pecan   Granola,Food -     Breakfast foods,3.99
+1,Cranberry pecan   Granola,Food -     Breakfast foods,-3.99
 2,,Kitchen,10.99
 3,Coconut Granola,Food - Snacks,4.19
 4,Arcade Game Machine,Gaming,299.99
 5,LED Christmas Lights,Home,29.99
 6,Hydration Backpack,Outdoor,39.99
-7,Chia Seed Pudding Mix,Food - Breakfast,4.19
+7,Chia Seed Pudding Mix,Food - Breakfast,0.19
 8,,Apps,24.99
 9,Coconut Flakes,Food - Baking,3.29
 10,Coconut Water,Food - Beverages,2.49
 11,Pet Leash,Pets,15.99
-12,Athletic Sports Bra,Clothing - Activewear,24.99
+12,Athletic Sports Bra,Clothing - Activewear,00.00
 13,Interactive Robot Toy,Toys,34.99
 14,Adjustable Window Blind,Home,49.99
 15,Pet Reflective Vest,Pets,18.99
@@ -27,7 +27,7 @@ product_id,name,category,price
 26,Honey Roasted Peanuts,Food - Snacks,3.19
 27,cilantro Lime Rice,Food - Grains,2.99
 28,Chilli Lime Corn on the Cob,Food - Vegetable,1.99
-29,Outdoor Camping Lantern,Outdoor,34.99
+29,Outdoor Camping Lantern,Outdoor,-34.99
 30,Brownie Bites,Food - Baked Goods,4.99
 31,Compact    Umbrella,Accessories,12.99
 32,Coconut Cashew Yogurt,Food - Dairy Alternatives,1.99
@@ -44,7 +44,7 @@ product_id,name,category,price
 43,Orange Ginger Vinaigrette,Food - Condiments,3.99
 44,Kids' Outdoor Explorer Kit,Toys,24.99
 45,Pumpkin Pancake Mix,Food - Breakfast,4.19
-46,Roasted Red Pepper Hummus,Food - Dips,3.49
+46,Roasted Red Pepper Hummus,Food - Dips,-3.49
 47,Smart Thermos,Fitness,39.99
 48,Essential Oils Diffuser Necklace,Health,19.99
 49,Heated Throw Blanket,Home,49.99
@@ -103,7 +103,7 @@ product_id,name,category,price
 101,Pet Bed,Pets,39.99
 102,Craft Beer Mustard,Food - Condiments,3.99
 103,Yoga Wheel,Fitness,34.99
-104,Phone Screen Protector,Accessories,12.99
+104,Phone Screen Protector,Accessories,00.00
 105,Chipotle Black Bean Burger,Food - Meats,4.99
 106,Almond Crunch Granola Bars,Food - Snacks,3.49
 107,truffle Parmesan Fries,Food - Snacks,4.99
@@ -133,7 +133,7 @@ product_id,name,category,price
 130,Sun-Dried Tomato Pesto,Food - Condiments,4.49
 131,Indian Curry Sauce,Food - Condiments,
 132,Yoga Strap,Fitness,12.99
-133,Almond Coconut Granola,,3.99
+133,Almond Coconut Granola,,-3.99
 134,Rechargeable Hand Warmer,Accessories,22.99
 135,Yoga Strap,Fitness,12.99
 136,Pasta Maker Machine,Kitchen,59.99
@@ -171,7 +171,7 @@ product_id,name,category,price
 166,Spicy Avocado Salsa,Food - Condiments,4.49
 167,High-Speed Blender,Kitchen,99.99
 168,Red Lentils,Food - Grains,1.99
-169,Chocolate Fudge Brownie Mix,Food - Baking,2.99
+169,Chocolate Fudge Brownie Mix,Food - Baking,-2.99
 170,Whole Grain Cereal,Food - Breakfast,3.49
 171,Non-Stick Baking Sheet,Kitchen,18.99
 172,Pineapple Coconut Bars,Food - Snacks,3.79
