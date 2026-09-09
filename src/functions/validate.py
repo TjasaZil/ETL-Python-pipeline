@@ -1,9 +1,7 @@
 import pandas as pd
 import logging
-import csv
 import re
 from src.functions.transform import standardize_date_format
-from src.country_codes import country_codes
 
 #setup logging
 logging.basicConfig(level=logging.INFO)

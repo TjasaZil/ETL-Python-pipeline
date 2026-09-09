@@ -73,43 +73,9 @@ The extraction step reads the source CSV files using Pandas.</br>
 The pipeline heeps extraction separate from validation and transformation, so that each stage has clear responsibility.</br>
 The files from where we are extracting the data are in the `data/` folder
 
-### Transform
-
-The transformation stage cleans and standardizes the raw data before validation. Examples of transformations include: <br>
-
-- removing leading and trailing whitespace
-- normalizing muiltiple spaces
-- standardizing names using 'Title Case'
-- converting emails to lowercase [DO IT - Because mails are not case sensitive]
-- converting country names to country codes
-- converting date strings into proper date values
-- converting numeric columns into appropriate numeric types
-
-Example transformations:
-
-1. Removing leading and trailing whitespace, normalizing multiple spaces, standardizing names using Title Case
-
-```
-"JOhN   SmiTh  "
-      |
-      v
- "John Smith"
-```
-
-2. converting date strings into proper date values
-
-```
-"27/07/2026"
-     |
-     v
-2026-07-27
-```
-
-Dates are converted into proper date values, so that they can be stored in the database using an appropriate DATE column.
-
 ### Validate
 
-After transformation, the data is validated against rules, specific to each dataset.
+Before transformation, the data is validated against rules, specific to each dataset.
 
 **Customers:**
 
@@ -165,6 +131,41 @@ The report distinguishes between:
 
 A row can fail multiple validation rules. For instance one record can have a missing name, invalid email and invalid date. A record like that is counted once as rejected, but contributes to all three individual validation failure counters. <br>
 This prevents rejected records from being counted more than once.
+
+### Transform
+
+The transformation stage cleans and standardizes the raw data after validation. Examples of transformations include: <br>
+
+- removing leading and trailing whitespace
+- normalizing muiltiple spaces
+- standardizing names using 'Title Case'
+- converting emails to lowercase [DO IT - Because mails are not case sensitive]
+- converting country names to country codes
+- converting date strings into proper date values
+- converting numeric columns into appropriate numeric types
+
+Example transformations:
+
+1. Removing leading and trailing whitespace, normalizing multiple spaces, standardizing names using Title Case
+
+```
+"JOhN   SmiTh  "
+      |
+      v
+ "John Smith"
+```
+
+2. converting date strings into proper date values
+
+```
+"27/07/2026"
+     |
+     v
+2026-07-27
+```
+
+Dates are converted into proper date values, so that they can be stored in the database using an appropriate DATE column.
+
 
 #### Data Reconciliation [TO IMPLEMENT]
 
