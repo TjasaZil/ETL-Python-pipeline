@@ -2,9 +2,8 @@
 import pandas as pd
 import logging
 
-from src.functions.transform import iso_country_code, standardize_date_format, trim_whitespace, float_to_int, lowercase_email
 from src.functions.extract import extract_data
-from src.functions.validate import check_for_null, validate_email, validate_date, remove_duplicates, check_price, check_quantity
+from src.functions.validate import check_for_null, validate_email, validate_date, validate_customers, validate_products, validate_orders
 
 from country_codes import country_codes
 
@@ -25,8 +24,10 @@ customers_df = extract_data(customers_path)
 products_df = extract_data(products_path)
 orders_df = extract_data(orders_path)
 
-print(country_existing(customers_df))
-
+#print(validate_date(customers_df, 'created_at'))
+#print(validate_customers(customers_df))
+#print(validate_products(products_df))
+#print(validate_orders(orders_df))
 # 2. transform the data
 
 # 3. clean / validate the data

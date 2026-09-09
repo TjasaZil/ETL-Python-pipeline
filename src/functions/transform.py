@@ -26,11 +26,9 @@ def standardize_date_format(df):
         logger.exception(f"There was an error when changing the date format of the data: {e}")
 
 #trims whitespace from certain columns and formats the string
-def trim_whitespace(df):
+def trim_whitespace(df, col):
     try:
-        for col in df.columns:
-            if col == 'name' or col == 'category' or col == 'country':
-                df[col] = df[col].str.split().str.join(" ").str.title()
+        df[col] = df[col].str.split().str.join(" ").str.title()
         return df
     except Exception as e:
         logger.exception(f"There was an error when trimming the whitespace of the data: {e}")

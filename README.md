@@ -90,11 +90,10 @@ Before transformation, the data is validated against rules, specific to each dat
 **Products:**
 
 - `product_id` must not be NULL
-- `name must` not be NULL
+- `name` must not be NULL
 - `category` must not be NULL
 - `quantity` must be greater than 0
 - `order_date` must be valid date
-- `referenced` customer and product IDs must exist [NOT IMPLEMENTED]
 - `records` should not be duplicated
 
 **Orders:**
