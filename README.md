@@ -73,9 +73,68 @@ The extraction step reads the source CSV files using Pandas.</br>
 The pipeline heeps extraction separate from validation and transformation, so that each stage has clear responsibility.</br>
 The files from where we are extracting the data are in the `data/` folder
 
+### Validate
+
+Before transformation, the data is validated against rules, specific to each dataset.
+
+**Customers:**
+
+- `customer_id` must not be NULL
+- `name` must not be NULL
+- `email` must not be NULL
+- `email` must have a valid format
+- `country` must not be NULL
+- `created_at` must be a valid date
+- `records` should not be duplicated
+
+**Products:**
+
+- `product_id` must not be NULL
+- `name` must not be NULL
+- `category` must not be NULL
+- `quantity` must be greater than 0
+- `order_date` must be valid date
+- `records` should not be duplicated
+
+**Orders:**
+
+- `order_id` must not be NULL
+- `customer_id` must not be null
+- `product_id` must not be null
+- `quantity` must be greater than 0
+- `order_date` must be valid
+- `referenced` same order_id must have same customer_id [NOT IMPLEMENTED]
+
+Validation is performed independently for each rule so that a single record san have multiple validation errors (this is done for more extensive reporting)
+
+### Invalid data handling [TO IMPLEMENT]
+
+Invalid records are not just deleted.<br>
+Each dataset has it's own invalid output `.cvs` file, that is generated in the `output/invalid` folder and each record contains a `rejection_reason` column, where it is described why the row was rejected
+
+#### Validation statistics [TO IMPLEMENT]
+
+The pipeline also generates validation statistic for each dataset. <br>
+The report distinguishes between:
+
+- **input rows** - total number of records read from the source file
+- **valid rows** - records that passed all validation rules
+- **rejected rows** - unique records that failed at least one validation rule
+- **loaded rows** - records successfully loaded into MySQL
+- **validation failures** - number of times individual rules were violated
+
+**Example of validation statistics:**
+
+```
+[DO EXAMPLE]
+```
+
+A row can fail multiple validation rules. For instance one record can have a missing name, invalid email and invalid date. A record like that is counted once as rejected, but contributes to all three individual validation failure counters. <br>
+This prevents rejected records from being counted more than once.
+
 ### Transform
 
-The transformation stage cleans and standardizes the raw data before validation. Examples of transformations include: <br>
+The transformation stage cleans and standardizes the raw data after validation. Examples of transformations include: <br>
 
 - removing leading and trailing whitespace
 - normalizing muiltiple spaces
@@ -107,65 +166,6 @@ Example transformations:
 
 Dates are converted into proper date values, so that they can be stored in the database using an appropriate DATE column.
 
-### Validate
-
-After transformation, the data is validated against rules, specific to each dataset.
-
-**Customers:**
-
-- `customer_id` must not be NULL
-- `name` must not be NULL
-- `email` must not be NULL
-- `email` must have a valid format
-- `country` must not be NULL
-- `country` must be valid [DO IT]
-- `created_at` must be a valid date
-- `records` should not be duplicated
-
-**Products:**
-
-- `product_id` must not be NULL
-- `name must` not be NULL
-- `category` must not be NULL
-- `quantity` must be greater than 0
-- `order_date` must be valid date
-- `referenced` customer and product IDs must exist [NOT IMPLEMENTED]
-- `records` should not be duplicated
-
-**Orders:**
-
-- `order_id` must not be NULL
-- `customer_id` must not be null
-- `product_id` must not be null
-- `quantity` must be greater than 0
-- `order_date` must be valid
-
-Validation is performed independently for each rule so that a single record san have multiple validation errors (this is done for more extensive reporting)
-
-### Invalid data handling [TO IMPLEMENT]
-
-Invalid records are not just deleted.<br>
-Each dataset has it's own invalid output `.cvs` file, that is generated in the `output/invalid` folder and each record contains a `rejection_reason` column, where it is described why the row was rejected
-
-#### Validation statistics [TO IMPLEMENT]
-
-The pipeline also generates validation statistic for each dataset. <br>
-The report distinguishes between:
-
-- **input rows** - total number of records read from the source file
-- **valid rows** - records that passed all validation rules
-- **rejected rows** - unique records that failed at least one validation rule
-- **loaded rows** - records successfully loaded into MySQL
-- **validation failures** - number of times individual rules were violated
-
-**Example of validation statistics:**
-
-```
-[DO EXAMPLE]
-```
-
-A row can fail multiple validation rules. For instance one record can have a missing name, invalid email and invalid date. A record like that is counted once as rejected, but contributes to all three individual validation failure counters. <br>
-This prevents rejected records from being counted more than once.
 
 #### Data Reconciliation [TO IMPLEMENT]
 

@@ -1,78 +1,86 @@
 import pandas as pd
 import logging
-import csv
 import re
-from src.functions.transform import standardize_date_format
 
 #setup logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-#removing null values and writing them into their own file
+#checking for null values
 def check_for_null(df):
     try:
-        for index, row in df.iterrows():
-            if row.isnull().values.any():
-                df.dropna(inplace=True)
-        return df
+        return ~df.isnull().any(axis=1)
     except Exception as e:
         logger.exception(f" There was a problem when checking for null values: {e}")
 
 
 #validating email
 def is_valid_email(email):
-    pattern = r"^[^@\s]+@[^@\s]+\.[^@\s]+$"
+    pattern =  r"^[^@\s]+@[^@\s]+\.[^@\s]+$"
     return bool(re.match(pattern, str(email)))
 
 def validate_email(df):
     try:
-        df = df[df["email"].apply(is_valid_email)]
-        return df
+        return df["email"].apply(is_valid_email)
     except Exception as e:
         logger.exception(f" There was a problem when trying to validate email: {e}")
 
-#validating that the date is not in the future
-def validate_date(df):
-    standardized_date=standardize_date_format(df)
+
+#validating that the date is not in the future and that the date is even a date
+def validate_date(df, column):
     try:
+        dates = pd.to_datetime(df[column], errors='coerce')
         current_date = pd.Timestamp.today()
-        for col in standardized_date.columns:
-            if col == 'created_at' or col == 'order_date':
-                for index, value in standardized_date[col].items():
-                    if value > current_date:
-                        df.drop(index, inplace=True)
-        return df
+        return dates.notna() & (dates <= current_date)
     except Exception as e:
         logger.exception(f" There was a problem when trying to validate date: {e}")
 
-#removing duplicates
-def remove_duplicates(df):
+#removing duplicates - not whole row but user determening what are the duplicates
+def validate_duplicates(df, column):
     try:
-        df_invalid = df.duplicated()
-        df_invalid_rows = df[df_invalid]
-        df_invalid_rows.to_csv("../data/invalid_data/duplicates.csv", index=False)
-        df = df[~df_invalid]
-        return df
+        return ~df.duplicated(subset=[column], keep=False)
     except Exception as e:
         logger.exception(f" There was a problem when trying to remove duplicate rows: {e}")
 
-#checks if price is >=0
-def checker_for_price(number):
-    return number < 0
-def check_price(df):
-    #checks if price is negative
-    try:
-        df = df[df["price"].apply(checker_for_price)]
-        return df
-    except Exception as e:
-        logger.exception(f"There was an error when checking the price:{e}")
 
-#checks if quantity is > 0
-def check_for_quantity(number):
-    return number <= 0
-def check_quantity(df):
+def validate_positives(df, column):
     try:
-        df = df[df["quantity"].apply(checker_for_price)]
-        return df
+        return df[column].notna() & (df[column] > 0)
     except Exception as e:
-        logger.exception(f"There was an error when checking the quantity: {e}")
+        logger.exception(f"There was an error when checking the negative number:{e}")
+
+
+def validate_customers(df):
+    try:
+        validation_results = pd.DataFrame(index=df.index) #make a DataFrame for validation results
+        validation_results["missing_values"] = ~check_for_null(df)
+        validation_results["invalid_email"] = ~validate_email(df)
+        validation_results["invalid_date"] = ~validate_date(df, column ="created_at")
+        validation_results["duplicate_customer_id"] = ~validate_duplicates(df, column='customer_id')
+        validation_results["is_valid"] = ~validation_results.any(axis=1)
+        return validation_results
+    except Exception as e:
+        logger.exception(f" There was a problem when trying to validate customers: {e}")
+
+def validate_products(df):
+    try:
+        validation_results = pd.DataFrame(index = df.index)
+        validation_results["missing_values"] = ~check_for_null(df)
+        validation_results["invalid_price"] = ~validate_positives(df, column="price")
+        validation_results["duplicate_product_id"] = ~validate_duplicates(df, column="product_id")
+        validation_results["is_valid"] = ~validation_results.any(axis=1)
+        return validation_results
+    except Exception as e:
+        logger.exception(f" There was a problem when trying to validate products: {e}")
+
+def validate_orders(df):
+    try:
+        validation_results = pd.DataFrame(index = df.index)
+        validation_results["missing_values"] = ~check_for_null(df)
+        validation_results["invalid_date"]= ~validate_date(df, column = "order_date")
+        validation_results["invalid_quantity"] = ~validate_positives(df, column = "quantity")
+        validation_results["is_valid"] = ~validation_results.any(axis=1)
+        return validation_results
+    except Exception as e:
+        logger.exception(f"There was a problem when trying to validate orders: {e}")
+
