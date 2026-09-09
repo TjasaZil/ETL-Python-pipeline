@@ -103,6 +103,7 @@ Before transformation, the data is validated against rules, specific to each dat
 - `product_id` must not be null
 - `quantity` must be greater than 0
 - `order_date` must be valid
+- `referenced` same order_id must have same customer_id [NOT IMPLEMENTED]
 
 Validation is performed independently for each rule so that a single record san have multiple validation errors (this is done for more extensive reporting)
 
