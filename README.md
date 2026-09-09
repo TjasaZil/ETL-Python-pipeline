@@ -118,7 +118,6 @@ After transformation, the data is validated against rules, specific to each data
 - `email` must not be NULL
 - `email` must have a valid format
 - `country` must not be NULL
-- `country` must be valid [DO IT]
 - `created_at` must be a valid date
 - `records` should not be duplicated
 

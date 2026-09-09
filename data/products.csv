@@ -222,6 +222,10 @@ product_id,name,category,price
 216,Infrared Space Heater,Home Appliances,99.99
 217,Wrist Support Brace,Health,19.99
 218,,Food - Bakery,6.49
+175,Rainbow Veggie Chips,Food - Snacks,3.29
+176,Ethical Wool Scarf,Clothing - Accessories,29.99
+175,Rainbow Veggie Chips,Food - Snacks,3.29
+176,Ethical Wool Scarf,Clothing - Accessories,29.99
 ,Protein Pancake Mix,Food - Breakfast,3.99
 220,Rustic Wooden Picture Frame,Home,19.99
 221,Toilet Paper (12 rolls),Food - Household,8.99
@@ -250,6 +254,7 @@ product_id,name,category,price
 244,Lightweight Workout Tank,Clothing - Activewear,29.99
 245,Wrap Jumpsuit,Clothing - Jumpsuits,54.99
 246,Vegan Mayonnaise,Food - Condiments,4.49
+238,Ice Cream Maker,Kitchen,79.99
 247,Vegan Mac & Cheese,Food - Frozen,8.99
 248,Chickpea Salad Deluxe,Food - Produce,4.29
 249,Handmade Soap Making Kit,Crafts,34.99
@@ -275,7 +280,7 @@ product_id,name,category,price
 269,Foam Muscle Roller,Fitness,24.99
 270,Glass Tea Pot,Kitchen,34.99
 271,Comfort Flats,Clothing - Shoes,44.99
-272,Black Bean Spaghetti,Food - Pasta,3.99
+272,Black Bean Spaghetti,Food - Pasta,-3.99
 273,,Food - Cooking Oil,6.99
 274,Chicken Broth,Food - Canned Goods,2.49
 275,Lasagna Noodles,Food - Pasta,1.89
@@ -295,7 +300,7 @@ product_id,name,category,price
 289,Glass Food Containers,Kitchen,34.99
 290,Car Diagnostic Scanner,,49.99
 291,Portable Projector,Electronics,199.99
-292,Almond Joy Munch Bars,Food - Snacks,1.39
+292,Almond Joy Munch Bars,Food - Snacks,0
 293,Travel Orthopedic Pillow,Travel,24.99
 294,Fitness Balance Ball,Fitness,24.99
 295,Set of Silicone Baking Molds,Kitchen,15.99
@@ -355,12 +360,14 @@ product_id,name,category,price
 349,Adjustable Bar Stools,Furniture,
 350,Picnic Blanket,Outdoor,29.99
 351,Roasted Garlic,Food - Condiments,4.29
+313,Electric Kettle,Kitchen,39.99
+313,Electric Kettle,Kitchen,39.99
 352,Pretzel Bites,Food - Snacks,4.99
 353,Almond Milk,Food - Dairy,3.29
 354,Vegetable Lentil Soup,Food - Canned Goods,3.49
 355,Inspirational Wall Art,Home,24.99
 356,Pear and Gorgonzola Salad,Food - Salads,5.49
-357,Ethically-Sourced Coffee Beans,Food - Beverages,9.99
+357,Ethically-Sourced Coffee Beans,Food - Beverages,-9.99
 358,Lemonade Mix,Food - Beverages,1.99
 359,Mushroom Soup (canned),Food - Canned Goods,2.49
 360,Chicken Broth,Food - Canned Goods,2.49
@@ -377,7 +384,7 @@ product_id,name,category,price
 371,Vegetable Stir-Fry Kit,Food - Produce,6.99
 372,Kids' Educational Tablet,Electronics,129.99
 ,Ricotta Cheese,Food - Dairy,4.99
-374,Vegetable Quinoa Bowl,Food - Frozen Meals,5.99
+374,Vegetable Quinoa Bowl,Food - Frozen Meals,-5.99
 375,Slim Fit Chinos,Clothing - Pants,54.99
 376,Travel Yoga Mat,Fitness,34.99
 377,Graphic Print Leggings,Clothing - Activewear,29.99
@@ -411,7 +418,7 @@ product_id,name,category,price
 405,LED Flashing Pet Collar,Pets,14.99
 406,,Health,14.99
 407,Sweet Potato Chips,Food - Snacks,2.99
-408,Whole Grain Cereal,Food - Breakfast,3.49
+408,Whole Grain Cereal,Food - Breakfast,0
 409,Pork Tenderloin,Food - Meat,10.99
 410,Digital Alarm Clock,Home,19.99
 411,Basic V-Neck T-Shirt,Clothing - Tops,19.99
@@ -486,6 +493,8 @@ product_id,name,category,price
 480,Oven-Baked Cheese Crisps,Food - Snacks,3.99
 481,Non-Stick Grill Pan,Kitchen,39.99
 482,Pumpkin Pancake Mix,Food - Breakfast,4.19
+446,High-Quality Yoga Block,Fitness,12.99
+446,High-Quality Yoga Block,Fitness,12.99
 483,Blackberry Compote,Food - Condiments,5.29
 484,Teriyaki Beef Jerky,Food - Snacks,5.49
 485,Smart LED Desk Lamp,Office,39.99
@@ -519,8 +528,8 @@ product_id,name,category,price
 513,Portable Pet Stroller,Pets,89.99
 514,Honey-Balsamic Vinaigrette,Food - Dressing,3.39
 515,,Books,27.99
-516,Flavored Instant Oatmeal,Food - Breakfast,2.99
-517,Spinach and Feta Wraps,Food - Prepared Foods,4.99
+516,Flavored Instant Oatmeal,Food - Breakfast,-2.99
+517,Spinach and Feta Wraps,Food - Prepared Foods,0
 518,Mayonnaise,Food - Condiments,3.29
 519,Pet Grooming Kit,Pets,39.99
 520,Fitness Balance Ball,Fitness,
@@ -571,6 +580,8 @@ product_id,name,category,price
 565,Chocolate Raspberry Tart,Food - Bakery,9.99
 566,Pet Training Clicker,Pets,5.99
 567,Reusable Snack Bags,Kitchen,14.99
+534,Beef Taco Skillet,Food - Meal Kits,8.49
+535,Honey Lemon Tea,Food - Beverages,3.29
 568,Carrot Ginger Soup,Food - Soups,4.29
 569,,Food - Snacks,3.29
 570,Pretzel Bites,,4.99
@@ -624,6 +635,7 @@ product_id,name,category,price
 618,Portable Hand Warmer,Accessories,24.99
 619,Compact Portable Grill,Outdoor,79.99
 ,Cabbage Slaw Mix,Food - Vegetables,2.29
+599,Peanut Butter Pretzel Nuggets,Food - Snacks,3.29
 621,Bamboo Memory Foam Pillow,Home,34.99
 622,Chocolate Chip Energy Balls,Food - Snacks,3.99
 623,Chocolate Dipped Fruit,Food - Snacks,5.99

@@ -3,6 +3,7 @@ import logging
 import csv
 import re
 from src.functions.transform import standardize_date_format
+from src.country_codes import country_codes
 
 #setup logging
 logging.basicConfig(level=logging.INFO)
@@ -21,7 +22,7 @@ def check_for_null(df):
 
 #validating email
 def is_valid_email(email):
-    pattern = r"^[^@\s]+@[^@\s]+\.[^@\s]+$"
+    pattern =  r"^[^@\s]+@[^@\s]+\.[^@\s]+$"
     return bool(re.match(pattern, str(email)))
 
 def validate_email(df):
@@ -30,6 +31,7 @@ def validate_email(df):
         return df
     except Exception as e:
         logger.exception(f" There was a problem when trying to validate email: {e}")
+
 
 #validating that the date is not in the future
 def validate_date(df):
@@ -56,23 +58,23 @@ def remove_duplicates(df):
     except Exception as e:
         logger.exception(f" There was a problem when trying to remove duplicate rows: {e}")
 
-#checks if price is >=0
-def checker_for_price(number):
-    return number < 0
+
+def checker_for_negative_number(number):
+    if pd.isnull(number):
+        return True
+    return int(number) < 0
+
 def check_price(df):
-    #checks if price is negative
     try:
-        df = df[df["price"].apply(checker_for_price)]
+        df = df[~df["price"].apply(checker_for_negative_number)]
         return df
     except Exception as e:
         logger.exception(f"There was an error when checking the price:{e}")
 
-#checks if quantity is > 0
-def check_for_quantity(number):
-    return number <= 0
 def check_quantity(df):
     try:
-        df = df[df["quantity"].apply(checker_for_price)]
+        df = df[~df["quantity"].apply(checker_for_negative_number)]
         return df
     except Exception as e:
         logger.exception(f"There was an error when checking the quantity: {e}")
+

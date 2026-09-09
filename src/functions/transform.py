@@ -35,8 +35,16 @@ def trim_whitespace(df):
     except Exception as e:
         logger.exception(f"There was an error when trimming the whitespace of the data: {e}")
 
+#transform mail top lower case
+def lowercase_email(df):
+    try:
+        for col in df.columns:
+            if col == 'email':
+                df[col] = df[col].str.lower()
+        return df
+    except Exception as e:
+        logger.exception(f"There was an error when lowercase the string of the data: {e}")
 # change ids from floats to inst
-
 def float_to_int(df):
     try:
         for col in df.columns:
