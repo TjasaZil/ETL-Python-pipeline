@@ -53,9 +53,10 @@ def float_to_int(df, col):
 
 def transform_customers(df):
     try:
-        df = iso_country_code(df)
         df = standardize_date_format(df, column = "created_at")
         df = trim_whitespace(df, col="name")
+        df = trim_whitespace(df, col="country")
+        df = iso_country_code(df)
         df = lowercase_email(df)
         df = float_to_int(df, col="customer_id")
         return df

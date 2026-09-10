@@ -3,6 +3,8 @@ from src.functions.extract import extract_data
 from src.functions.validate import validate_products
 from src.functions.report import add_rejection_reasons, save_invalid_data, create_report, save_report
 from src.functions.transform import transform_products
+from src.functions.load import load_to_sql
+
 products_invalid_path ="../output/invalid/products_invalid.csv"
 products_report_path ="../output/reports/products_report.json"
 
@@ -19,4 +21,5 @@ def products_pipeline(file_path):
     save_report(products_report, products_report_path)
     #transform valid data
     valid_products_df = products_df[validated_products_results["is_valid"]].copy()
-    return transform_products(valid_products_df)
+    ready_for_db = transform_products(valid_products_df)
+    load_to_sql(ready_for_db, table_name="products")
