@@ -8,8 +8,8 @@ customers_path="../data/customers.csv"
 orders_path="../data/orders.csv"
 products_path = "../data/products.csv"
 
-#print(customers_pipeline(customers_path))
-#print(products_pipeline(products_path))
-print(orders_pipeline(orders_path))
+customers_pipeline(customers_path)
+#products_pipeline(products_path)
+#orders_pipeline(orders_path)
 
 

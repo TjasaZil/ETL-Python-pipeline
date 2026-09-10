@@ -1,7 +1,7 @@
 customer_id,name,email,country,created_at
- 1,Deeann Bingle,dbinBgle0@nature.com,1China,16/5/2025
+ 1,Deeann Bingle,dbinBgle0@nature.com, China,16/5/2025
 2,Cherise gronou,cgronou1tumblr,Brazil,24/5/2025
-3, Wes Crew,wcrew2@ifeng.com,Indonesia,21/11/2025
+3, Wes Crew,wcrew2@ifeng.com, Indonesia,21/11/2025
 4,Avis Rothermel,arothermel3@sfgate.com, Sweden,31/3/2026
 5,filide     Wincott, fwincott4@samsung.com,Russia ,14/12/2026
 6,Simona Flowers,sflowers5@unblog.fr,Uruguay,11/9/2026
@@ -17,7 +17,7 @@ customer_id,name,email,country,created_at
 16,Terrell Middleweek,Tmiddleweekf@comsenz.com,Vietnam,25/6/2026
 17, Candis Eymor,ceymorg@hubpages.com, Portugal,29/6/2026
 18,Atlanta Lefeaver,alefeaverh@free.fr,Colombia,11/11/2026
-19,Tammy O'Dennehy,todennehyi@reverbnation.com,UnitedStates,9/5/2026
+19,Tammy O'Dennehy,todennehyi@reverbnation.com,United States,9/5/2026
 20,Kay Robinson,krobinsonj@printfriendly.com,France,8/6/2026
 21,Geoff Acton,gactonk@hubpages.com,Norway,22/8/2026
 22, Boyd Van Rembrandt,bvanl@desdev.cn,Ukraine,3/5/2025
@@ -28,7 +28,7 @@ customer_id,name,email,country,created_at
 27,Glynnis Philipeaux,gphilipeauxq@ebay.co.uk,Bulgaria,30/12/2026
 28,Jane Browning,jbrowningrnbcnews.com,Mongolia,26/8/2025
 29,Sheridan mcHarry,smcharrys@toplist.cz,France,2/3/2026
-30,Thatch Jocic,tjocict@icq.com,Czech Repulic,27/6/2025
+30,Thatch Jocic,tjocict@icq.com,Czech Republic,27/6/2025
 31,Gabby Cottage,gcottageu@youku.com,Finland,18/6/2026
 32,Anatole Richten,arichtenv@yolasite.com,Mongolia,27/10/2025
 33,Davey Haller,dhallerw@youtu.be,Philippines,12/12/2025
@@ -82,7 +82,7 @@ customer_id,name,email,country,created_at
 80,Bride Filipczynski,bfilipczynski27@springer.com,France,23/9/2026
 81,Dianna  Rutland,drutland28@baidu.com,South Korea,21/4/2026
 82,Arnaldo Pilgram,apilgram29@theguardian.com,Japan,6/3/2026
-83,Estelle Wedmore,ewedmore2a@addthis.com,Rssia,13/11/2026
+83,Estelle Wedmore,ewedmore2a@addthis.com,Russia,13/11/2026
 84,Abigail Worssam,aworssam2b@webnode.com,China,22/8/2025
 85,Jason Addison,jaddison2c@google.fr,Mexico,21/9/2026
 86,Dore Barosch,dbarosch2d@free.fr,Bangladesh,14/3/2026
@@ -138,7 +138,7 @@ customer_id,name,email,country,created_at
 132,Humphrey Iacobo,hiacobo3n@wired.com,Russia,28/7/2026
 133, Lulita Mc Kellen,lmc3o@hexun.com,United States,3/4/2026
 134,Claresta Flament,cflament3p@businesswire.com,China,18/2/2026
-135,Hamil Theurer,htheurer3q@rediff.com,Frnce,14/4/2026
+135,Hamil Theurer,htheurer3q@rediff.com,France,14/4/2026
 136,Archambault Ridsdell,aridsdell3r@tuttocitta.it,Japan,21/7/2026
 137,Brody Apted,bapted3s@marriott.com,Indonesia,3/7/2025
 138,Arny Koenraad,akoenraad3t@toplist.cz,Jordan,6/4/2026
@@ -196,7 +196,7 @@ customer_id,name,email,country,created_at
 189,Delila Coate,dcoaTe58@jimdo.com,China,12/7/2026
 190,Wren Itzcak,witzcaK59@cbslocal.com,China,7/6/2025
 191,Hyacintha Latta,hlatta5a@elpais.com,China,23/11/2026
-192,Tam Chilton,tchilton5b@sphinn.com,Cina,25/11/2025
+192,Tam Chilton,tchilton5b@sphinn.com,China,25/11/2025
 193,Arnoldo Elderton,aelderton5c@github.io,Japan,2/10/2025
 194,Zacharie Boar,zboar5d@reference.com,Bosnia and Herzegovina,27/1/2026
 195,Lucila Ellwood,lellwood5e@wired.com,Ireland,8/8/2025

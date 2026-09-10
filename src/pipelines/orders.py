@@ -3,6 +3,7 @@ from src.functions.extract import extract_data
 from src.functions.validate import validate_orders
 from src.functions.report import add_rejection_reasons, save_invalid_data, create_report, save_report
 from src.functions.transform import transform_orders
+from src.functions.load import load_to_sql
 orders_invalid_path ="../output/invalid/orders_invalid.csv"
 orders_report_path ="../output/reports/orders_report.json"
 
@@ -19,4 +20,6 @@ def orders_pipeline(file_path):
     save_report(orders_report, orders_report_path)
     #transform valid data
     valid_orders_df = orders_df[validated_orders_results["is_valid"]].copy()
-    return transform_orders(valid_orders_df)
+    #Load into database
+    ready_for_db = transform_orders(valid_orders_df)
+    load_to_sql(ready_for_db, table_name="orders")
