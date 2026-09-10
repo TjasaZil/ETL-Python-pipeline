@@ -21,7 +21,7 @@ The goal is to ensure that only valid and cleaned data is loaded into the databa
 - Pandas
 - MySQL
 - SQLAlchemy
-- PyMySQL
+- Python-dotenv
 - Git / GitHub
 - Logging
 
@@ -43,7 +43,6 @@ ETL-Python-pipeline/
 |  |-- reports/
 |  |  |-- customres_report.json
 |  |  |-- orders_report.json
-|  |  |-- pipeline_report.json
 |  |  |-- products_report.json
 |
 |-- src/
@@ -60,6 +59,7 @@ ETL-Python-pipeline/
 |  |-- country_codes.py
 |  |-- main.py
 |
+|-- .example.env
 |-- .gitignore
 |-- README.md
 
@@ -70,7 +70,6 @@ ETL-Python-pipeline/
 ### Extract
 
 The extraction step reads the source CSV files using Pandas.</br>
-The pipeline heeps extraction separate from validation and transformation, so that each stage has clear responsibility.</br>
 The files from where we are extracting the data are in the `data/` folder
 
 ### Validate
@@ -103,16 +102,15 @@ Before transformation, the data is validated against rules, specific to each dat
 - `product_id` must not be null
 - `quantity` must be greater than 0
 - `order_date` must be valid
-- `referenced` same order_id must have same customer_id [NOT IMPLEMENTED]
 
 Validation is performed independently for each rule so that a single record san have multiple validation errors (this is done for more extensive reporting)
 
-### Invalid data handling [TO IMPLEMENT]
+### Invalid data handling
 
 Invalid records are not just deleted.<br>
 Each dataset has it's own invalid output `.cvs` file, that is generated in the `output/invalid` folder and each record contains a `rejection_reason` column, where it is described why the row was rejected
 
-#### Validation statistics [TO IMPLEMENT]
+#### Validation statistics 
 
 The pipeline also generates validation statistic for each dataset. <br>
 The report distinguishes between:
@@ -120,13 +118,22 @@ The report distinguishes between:
 - **input rows** - total number of records read from the source file
 - **valid rows** - records that passed all validation rules
 - **rejected rows** - unique records that failed at least one validation rule
-- **loaded rows** - records successfully loaded into MySQL
 - **validation failures** - number of times individual rules were violated
 
 **Example of validation statistics:**
 
 ```
-[DO EXAMPLE]
+{
+    "input rows": 1014,
+    "valid rows": 672,
+    "rejected rows": 342,
+    "validation failures": {
+        "missing_values": 115,
+        "invalid_email": 25,
+        "invalid_date": 248,
+        "duplicate_customer_id": 48
+    }
+}
 ```
 
 A row can fail multiple validation rules. For instance one record can have a missing name, invalid email and invalid date. A record like that is counted once as rejected, but contributes to all three individual validation failure counters. <br>
@@ -139,7 +146,7 @@ The transformation stage cleans and standardizes the raw data after validation. 
 - removing leading and trailing whitespace
 - normalizing muiltiple spaces
 - standardizing names using 'Title Case'
-- converting emails to lowercase [DO IT - Because mails are not case sensitive]
+- converting emails to lowercase
 - converting country names to country codes
 - converting date strings into proper date values
 - converting numeric columns into appropriate numeric types
@@ -166,14 +173,7 @@ Example transformations:
 
 Dates are converted into proper date values, so that they can be stored in the database using an appropriate DATE column.
 
-
-#### Data Reconciliation [TO IMPLEMENT]
-
-The pipeline performs basic reconciliation checks after validation and loading. <br><br>
-It is expected that the number of **input rows** is the same as the number of **valid** and **invalid rows** combined (total number of records, read from the source file, must be the same as the sum of records that passed all validation checks, and unique records that failed at least one validation rule). And the number of **valid rows** must be the same as the number of **loaded rows** (number of rows that passed all validation rules is the same as number of rows loaded into MySQL).<br><br>
-If these numbers do not match, the pipeline reports an error, which helps detect unexpected data loss during processing.
-
-### Loading [TO IMPLEMENT]
+### Loading
 
 After the transformation and validation, only valid records are loaded into a MySQL database. <br>
 Each dataset is loaded into a separate table, with a name corresponding to the dataset name.
@@ -192,9 +192,59 @@ Here are some of the questions that we can explore, using different queries:
 - How many orders were placed each day?
 - Which products have never been ordered?
 
-## Configuration [TO IMPLEMENT]
+Example queries are written in the `sql_scripts\` folder
 
-## Installation [TO IMPLEMENT]
+## Configuration
+Database credentials are stored in environment variables rather than directly in the source code.<br>
+This is an example of the `.env` file:
+```dotenv
+USER='your_username'
+PASSWORD='your_password'
+HOST='localhost'
+PORT=3306
+DATABASE='your_database'
+```
+Personal `.env` file is excluded from Git, using `.gitignore.`<br>
+An `.env.example` file is included in the repository to show the required configuration without exposing credentials.
+
+## Installation 
+Prerequisites:
+- MySQL installed 
+- Python installed
+- Git installed
+
+Clone the repository and open it with your code editor of choice.
+```
+https://github.com/TjasaZil/ETL-Python-pipeline.git
+```
+Create a virtual environment
+```
+python -m venv venv
+```
+Activate it
+- Windows
+```
+venv\Scripts\activate
+```
+- Linux / macOS
+```
+source venv/bin/activate
+```
+Install dependencies
+```
+pip install -r requirements.txt
+```
+Rename `.env.example` file into `.env` and write in your MySQL credentials.<br>
+
+Run the pipelines
+```
+python -m src.main
+```
+
+There are three individual pipelines, one for each dataset. The pipeline extracts data from the `.csv` file, validates it against specific rules and removes invalid rows into it's own `.csv` files.
+Valid data is then transformed and loaded into MySQL database.<br>
+After the execution of the pipelines the database should be populated with tables and there should be an `output/` folder in the repository.<br>
+Invalid data are stored in `output/invalid` folder and simple reports are generated in the `output/reports` folder.
 
 ## Future improvements:
 
@@ -213,9 +263,9 @@ Here are some of the questions that we can explore, using different queries:
 This project was built to demonstrate practical understanding of several fundamental data engineering concepts:
 
 - Building an ETL pipeline in python
-- Working with structured data using Pandas
+- Working with structured data using pandas
 - Data cleaning and transformation
-- Data validation and quality checks
+- Data validation and simple quality checks
 - Handling invalid data
 - Designing reusable pipeline components
 - Working with relational databases
