@@ -4,6 +4,7 @@ from src.functions.validate import validate_orders
 from src.functions.report import add_rejection_reasons, save_invalid_data, create_report, save_report
 from src.functions.transform import transform_orders
 from src.functions.load import load_to_sql
+
 orders_invalid_path ="../output/invalid/orders_invalid.csv"
 orders_report_path ="../output/reports/orders_report.json"
 

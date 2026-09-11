@@ -1,0 +1,21 @@
+name: Auto PR
+on:
+  push:
+    branches-ignore:
+    - master
+    - development
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  create-pull-request:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - name: create-pull-request
+        uses: diillson/auto-pull-request@4cf50b3681cd76250f37841466e61e514a377064
+        with:
+          destination_branch: "development"

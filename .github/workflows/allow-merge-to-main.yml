@@ -1,0 +1,14 @@
+name: 'Allow merge to main'
+
+on:
+  pull_request:
+
+jobs:
+  check_branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Allow merge to main
+        if: github.base_ref == 'master' && (github.head_ref != 'development' || github.event.pull_request.head.repo.full_name != github.repository)
+        run: |
+          echo 'ERROR: you can only merge to master from development.'
+          exit 1
