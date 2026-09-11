@@ -4,40 +4,56 @@ SELECT o.product_id, p.name, sum(o.quantity) AS total_quantity
 FROM orders AS o
 LEFT JOIN products AS p
 ON o.product_id = p.product_id
+WHERE p.name IS NOT NULL
 GROUP BY o.product_id, p.name
 ORDER BY total_quantity DESC
 LIMIT 10;
 
 -- Which customers have placed the most orders?
 
-SELECT c.name, count(DISTINCT o.order_id) as total_orders
-FROM customers as c
-join orders as o
-on o.customer_id = c.customer_id
-group by c.customer_id, c.name
-order by total_orders desc;
+SELECT c.name, COUNT(DISTINCT o.order_id) as total_orders
+FROM orders as o
+LEFT JOIN customers as c
+ON o.customer_id = c.customer_id
+WHERE c.name IS NOT NULL
+GROUP BY c.customer_id, c.name
+ORDER BY total_orders DESC;
 
 -- What is the total quantity sold for each product?
--- select o.product_id, p.name, sum(quantity) as quantity_sold
--- from orders as o
--- left join products as p
--- on o.product_id = p.product_id
--- group by o.product_id, p.name
+SELECT p.name, SUM(o.quantity) AS total_sold
+FROM orders AS o
+LEFT JOIN products AS p
+ON p.product_id = o.product_id
+WHERE p.name IS NOT NULL
+GROUP BY p.name
+ORDER BY total_sold DESC;
 
 -- What is the total revenue by product category
 
--- select a.category, round(sum(a.item_order_price), 2) as total_category_price
--- from
---     (
---     select p.name, p.category, (o.quantity) * p.price as item_order_price
---     from orders as o
---     left join products as p
---     on p.product_id = o.product_id
---     ) as a
--- group by a.category
--- order by total_category_price desc
+ SELECT a.category, ROUND(SUM(a.item_order_price), 2) AS total_category_price
+ FROM
+     (
+     SELECT p.name, p.category, (o.quantity * p.price) AS item_order_price
+     FROM orders AS o
+     LEFT JOIN products AS p
+	 ON p.product_id = o.product_id
+     ) AS a
+GROUP BY a.category
+ORDER BY total_category_price DESC;
 
 -- Which customers generated the highest revenue
+SELECT a.name, ROUND(sum(a.quantity * p.price), 2) as total_revenue
+FROM
+	(SELECT o.customer_id, c.name, o.product_id, sum(o.quantity) as quantity
+	FROM orders AS o
+	LEFT JOIN customers AS c
+	ON c.customer_id = o.customer_id
+	GROUP BY o.customer_id, c.name, o.product_id) AS a
+LEFT JOIN products AS p
+ON p.product_id = a.product_id
+WHERE a.name IS NOT NULL
+GROUP BY a.name
+ORDER BY total_revenue DESC;
 
 -- How many orders were placed each day?
 

@@ -201,7 +201,7 @@ Here are some of the questions that we can explore, using different queries:
 - How many orders were placed each day?
 - Which products have never been ordered?
 
-Example queries are written in the `sql_analysis\` folder
+Example queries are written in the `sql_analysis/` folder
 
 ## Configuration
 Database credentials are stored in environment variables rather than directly in the source code.<br>
@@ -259,7 +259,7 @@ Invalid data are stored in `output/invalid` folder and simple reports are genera
 
 - [ ] containerizing the application with Docker
 - [ ] adding a Docker Compose setup for MySQL
-- [x] adding a CI/CD pipeline with GitHub Actions - *[added on 11.0.2026 - pipeline for auto-pr to `development` branch]*
+- [x] adding a CI/CD pipeline with GitHub Actions - *[added on 11.09.2026 - pipeline for auto-pr to `development` branch]*
 - [ ] adding tests using pytest
 - [ ] improving pipeline configuration
 - [ ] adding database schema migrations
