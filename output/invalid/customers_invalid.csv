@@ -1,0 +1,342 @@
+customer_id,name,email,country,created_at,rejection_reasons
+2.0,Cherise gronou,cgronou1tumblr,Brazil,24/5/2025,invalid_email
+5.0,filide     Wincott, fwincott4@samsung.com,Russia ,14/12/2026,"invalid_email, invalid_date"
+,Arlin Parsonson,aparsonson7@weather.com,South Africa,12/1/2026,"missing_values, duplicate_customer_id"
+11.0,,khabberghama@dot.gov,Germany,8/10/2026,"missing_values, invalid_date"
+12.0,Dill Dommersen,ddommersenb@foxnews,Japan,9/3/2026,invalid_email
+,Cindie Aingell,caingellc@reverbnation.com,Sweden,17/1/2027,"missing_values, invalid_date, duplicate_customer_id"
+14.0,Colline Arnao,carnaod@rambler.ru,Luxembourg,27/9/2026,invalid_date
+15.0,Berte McDugal,bmcdugale@cam.Ac.uk,Philippines,27/1/2027,invalid_date
+18.0,Atlanta Lefeaver,alefeaverh@free.fr,Colombia,11/11/2026,invalid_date
+21.0,Geoff Acton,gactonk@hubpages.com,Norway,22/8/2026,duplicate_customer_id
+22.0, Boyd Van Rembrandt,bvanl@desdev.cn,Ukraine,3/5/2025,duplicate_customer_id
+,Dur McQuade,dmcquadem@imgur.com,Panama,12/12/2026,"missing_values, invalid_date, duplicate_customer_id"
+24.0,Zolly     Jore,,Thailand,8/9/2026,"missing_values, invalid_email, duplicate_customer_id"
+25.0,Liuka Oldroyde,loldroydeo@goo.gl ,Ecuador,29/9/2025,invalid_email
+26.0,Alexa Beach,abeachp@biblegateway.com,Brazil,,"missing_values, invalid_date"
+27.0,Glynnis Philipeaux,gphilipeauxq@ebay.co.uk,Bulgaria,30/12/2026,invalid_date
+28.0,Jane Browning,jbrowningrnbcnews.com,Mongolia,26/8/2025,invalid_email
+43.0,Bartlet Yakovliv,byakovliv16@t-online.de,China,23/9/2026,invalid_date
+, Sharlene Danigel,sdanigel17@google.ca,Morocco,1/1/2026,"missing_values, duplicate_customer_id"
+46.0,,ylampet19@intel.com,Czech Republic,31/12/2026,"missing_values, invalid_date"
+47.0,Tawsha Stratford,tstratford1a@mapquest.com,China,1/1/2027,invalid_date
+49.0,barney Josephson,bjosephson1c@examiner.com,China,30/9/2026,invalid_date
+138.0,Arny Koenraad,akoenraad3t@toplist.cz,Jordan,6/4/2026,duplicate_customer_id
+54.0,Sydel macGovern,smacgovern1h@g.co,China,29/1/2027,invalid_date
+56.0,Saundra Grishanin,sgrishanin1j@discuz.net,Portugal,7/1/2027,invalid_date
+57.0,Reggi Bim,rbim1k@unblog.fr,Bulgaria,12/11/2026,invalid_date
+61.0,Adela Sworder,asworder1ospotify.com,Brazil,7/8/2025,invalid_email
+62.0,Gianna Neilson,gneilson1p@unicef.org,Indonesia,18/10/2026,invalid_date
+67.0,Hasty Sedgwick,hsE@dgwick1u@earthlink.net,Indonesia,25/5/2026,invalid_email
+68.0,Barnabas Pestricke,bpestricke1v@omniture.com,Ireland,10/10/2026,invalid_date
+74.0,Constancy Hirtz,chirtz21@arstechnica.com,Iran,10/1/2027,invalid_date
+76.0,Erich Hasell,ehasell23@who,China,16/4/2026,invalid_email
+80.0,Bride Filipczynski,bfilipczynski27@springer.com,France,23/9/2026,invalid_date
+83.0,Estelle Wedmore,ewedmore2a@addthis.com,Russia,13/11/2026,invalid_date
+85.0,Jason Addison,jaddison2c@google.fr,Mexico,21/9/2026,invalid_date
+87.0,Hanson Sedgefield,hsedgefield2e@tmall.com,Paraguay,11/12/2026,invalid_date
+89.0,Whitaker Cuddon,wcuddon2g@joomla.org,Albania,20/11/2026,invalid_date
+91.0,Guinevere Glennie,,Bulgaria,5/7/2026,"missing_values, invalid_email"
+21.0,Geoff Acton,gactonk@hubpages.com,Norway,22/8/2026,duplicate_customer_id
+22.0, Boyd Van Rembrandt,bvanl@desdev.cn,Ukraine,3/5/2025,duplicate_customer_id
+,Dur McQuade,dmcquadem@imgur.com,Panama,12/12/2026,"missing_values, invalid_date, duplicate_customer_id"
+24.0,Zolly     Jore,,Thailand,8/9/2026,"missing_values, invalid_email, duplicate_customer_id"
+100.0,Baird Kavanagh,bkavanagh2r@ihg.com,Poland,9/1/2027,invalid_date
+102.0,Trixy Maccrae,,Guatemala,29/5/2026,"missing_values, invalid_email"
+103.0,Tabatha Dillet,tdillet2u@japanpost.jp,China,2/11/2026,invalid_date
+108.0,Vicki Nucciotti,vnucciotti2z@fastcompany.com,Brazil,16/9/2026,invalid_date
+113.0,Rosabella Diehn,rdiehn34@pen.io,Mexico,21/8/2025,duplicate_customer_id
+119.0,Joseph Harness,,Norway,,"missing_values, invalid_email, invalid_date"
+122.0,Walden Cowling,wcowling3dmapy.cz,Poland,3/2/2026,invalid_email
+124.0,Jade Danat,jdanat3f@constantcontact.com,Brazil,16/11/2026,invalid_date
+126.0,Jordain Rimes,jrimes3h@sbwire.com,Russia,1/10/2026,invalid_date
+138.0,Arny Koenraad,akoenraad3t@toplist.cz,Jordan,6/4/2026,duplicate_customer_id
+113.0,Rosabella Diehn,rdiehn34@pen.io,Mexico,21/8/2025,duplicate_customer_id
+150.0,Honey Preuvost,hpreuvost45@ow.ly,Israel,30/12/2026,invalid_date
+152.0,Alic Yglesias,,Peru,12/1/2026,"missing_values, invalid_email"
+156.0,Denys Mart,dmart4b@so-net.ne.jp,Madagascar,11/12/2026,invalid_date
+,Erie Revel,erevel4d@gravatar.com,San Marino,4/12/2026,"missing_values, invalid_date, duplicate_customer_id"
+160.0,Obed Antonikov,oantonikov4f@51.la,Serbia,20/11/2026,invalid_date
+161.0,,kstogill4g@webmd.com,China,5/11/2026,"missing_values, invalid_date"
+168.0,Kailey Trevett,ktrevett4n@princeton.edu,Russia,19/12/2026,invalid_date
+170.0,Matt Ferraraccio,mferraraccio4p@github.io,Indonesia,4/1/2027,invalid_date
+176.0,Myrtle Falls,mfalls4v@tripod.com,Ukraine,6/10/2026,invalid_date
+180.0,Natty Tainton,ntainton4z@facebook.com,,6/5/2026,missing_values
+,Martguerita Folshom,mfolshom50@bing.com,Colombia,11/11/2026,"missing_values, invalid_date, duplicate_customer_id"
+182.0,Claire Pendreigh,cpendreigh51@networksolutions.com,Portugal,28/10/2026,invalid_date
+183.0,Gussie Vasilov,gvasilov52@technorati.com,Portugal,21/11/2026,invalid_date
+184.0,Sarene Ahrend,,South Africa,14/1/2026,"missing_values, invalid_email"
+185.0,Regen Slany,rslany54@weebly.com,China,25/9/2026,invalid_date
+186.0,Keane Scotchbourouge,kscotchbourouge55@g.co,Egypt,,"missing_values, invalid_date"
+191.0,Hyacintha Latta,hlatta5a@elpais.com,China,23/11/2026,invalid_date
+199.0,Kathleen Twelftree,ktwelftree5i@smugmug.com,Netherlands,9/10/2026,invalid_date
+201.0,Othello Gowlett,ogowlett5k@goo.gl,Indonesia,14/10/2026,invalid_date
+204.0,Vere Hanigan,vhanigan5n@mayoclinic,Indonesia,24/11/2026,"invalid_email, invalid_date"
+207.0,,pswancott5q@google.com.au,China,30/6/2026,missing_values
+209.0,Pen Chapier,pchapier5s@moonfruit.com,Philippines,20/9/2026,invalid_date
+212.0,Inigo Mayzes,imayzes5v@fotki.com,Brazil,6/1/2027,invalid_date
+214.0,Anetta Garnham,agarnham5x@aol.com,Nigeria,11/10/2026,invalid_date
+216.0,Jolene Cutmore,jcutmore5z@usnews.com,,2/6/2026,missing_values
+222.0,Jacquette Bohden,jbohden65@a8.net,Russia,26/11/2026,invalid_date
+223.0,Stanfield Dukesbury,sdukesbury66@mysql.com,China,8/11/2026,invalid_date
+225.0,Tamma Kohlert,tkohlert68@rediff.com,Russia,30/10/2026,invalid_date
+228.0,Bobette De Mattei,,China,16/7/2026,"missing_values, invalid_email"
+229.0,Doll Roj,droj6c@quantcast.com,Tajikistan,29/12/2026,invalid_date
+233.0,Jessie Firsby,jfirsby6g@wix.com,China,9/11/2026,invalid_date
+235.0,Holli Wernher,hwernher6i@weibo.com,Honduras,8/12/2026,invalid_date
+245.0,Abrahan Perulli,aperulli6s@vkontakte.ru,Philippines,29/11/2026,invalid_date
+,Hamel Antoszewski,hantoszewski6u@hatena.ne.jp,Brazil,5/9/2026,"missing_values, duplicate_customer_id"
+250.0,Kelbee Jenkins,kjenkins6x@goo.ne.jp,China,6/10/2026,invalid_date
+253.0,Fancie Finker,ffinker70@prnewswire.com,China,8/10/2026,invalid_date
+254.0,Romain Trunchion,rtrunchion71@salon.com,Czech Republic,14/1/2027,invalid_date
+259.0,Tine Dominka,tdominka76@gravatar.com,Uganda,19/11/2026,invalid_date
+267.0,Susana Dolden,sdolden7e@homestead.com,China,19/1/2027,invalid_date
+279.0,Robers Shippard,Rshippard7q@cdbaby.com,China,10/1/2027,invalid_date
+283.0,Rowena Blyde,rblyde7u@youku.com,Japan,,"missing_values, invalid_date"
+284.0,Tandie Hurn,thurn7v@abc.net.au,Iran,,"missing_values, invalid_date"
+285.0,,wnetley7w@indiatimes.com,Poland,17/3/2026,missing_values
+286.0,,loxteby7x@tinypic.com,,5/2/2026,missing_values
+287.0,Hinze Gowanlock,hgowanlock7y@ycombinator.com,Indonesia,,"missing_values, invalid_date"
+288.0,Grayce Pencott,gpencott7z@cpanel.net,,28/9/2026,"missing_values, invalid_date"
+293.0,Juieta Rumming,jrumming84@redcross.org,Japan,27/1/2027,invalid_date
+294.0,Shamus Pettegre,,China,3/9/2026,"missing_values, invalid_email"
+298.0,Shem Mattioli,smattioli89@house.gov,Bangldesh,31/12/2026,invalid_date
+300.0,Bobbi Deluze,bdeluze8b@alibaba.com,Bulgaria,,"missing_values, invalid_date"
+303.0,Ives Remer,iremer8e@dmoz.org,Ukraine,7/10/2026,invalid_date
+306.0,Charmian Stooders,cstooders8h@yahoo.co.jp,,3/1/2026,missing_values
+309.0,Lewiss Zealey,lzealey8k@skyrock.com,Portugal,3/10/2026,invalid_date
+310.0,Samuel Backsal,sbacksal8l@paginegialle.it,Indonesia,24/10/2026,invalid_date
+322.0,Angus Friedman,afriedman8x@uiuc.edu,Macedonia,14/12/2026,invalid_date
+323.0,Fallon Crosson,fcrosson8y@huffingtonpost.com,Saudi Arabia,30/9/2026,invalid_date
+327.0,Orrin Lowrey,olowrey92@123-reg.co.uk,France,29/12/2026,invalid_date
+,Sapphire Hadley,shadley94@slideshare.net,China,16/4/2026,"missing_values, duplicate_customer_id"
+333.0,Candra Dommerque,cdommerque98@webnode.com,United States,4/11/2026,invalid_date
+337.0,Ingar Hedingham,ihedingham9c@163.com,Indonesia,13/10/2026,invalid_date
+342.0,Gabe Barnfather,gbarnfather9h@about.com,,5/5/2025,missing_values
+344.0,Thatch Coning,tconing9j@dyndns.org,Portugal,29/12/2026,invalid_date
+345.0,Rosco Jiracek,rjiracek9k@google.com.au,Greece,17/11/2026,invalid_date
+347.0,Maison Dundin,mdundin9m@com.com,Portugal,6/12/2026,invalid_date
+,,ktibbits9q@photobucket.com,Czech Republic,19/12/2025,"missing_values, duplicate_customer_id"
+354.0,Blondell Pinilla,bpinilla9t@omniture.com,Sweden,15/10/2026,invalid_date
+356.0,Ranice Pawley,rpawley9v@engadget.com,,28/1/2027,"missing_values, invalid_date"
+,Keene Petren,kpetren9y@narod.ru,United States,8/7/2026,"missing_values, duplicate_customer_id"
+360.0,,ntownson9z@si.edu,Indonesia,9/4/2026,missing_values
+362.0,Vivian Beall,vbealla1@hatena.ne.jp,China,,"missing_values, invalid_date"
+364.0,Bonni Hewlings,bhewlingsa3@xinhuanet.com,Belarus,16/9/2026,invalid_date
+366.0,Sanford Grutchfield,sgrutchfielda5@last.fm,Japan,27/12/2026,invalid_date
+371.0,,mghioneaa@themeforest.net,,29/11/2026,"missing_values, invalid_date"
+376.0,Thedric Heild,theildaf@cyberchimps.com,Russia,18/11/2026,invalid_date
+381.0,,sreddingak@guardian.co.uk,Madagascar,2/1/2027,"missing_values, invalid_date"
+384.0,Georgetta Beeres,gbeeresan@soup.io,Philippines,21/1/2027,invalid_date
+388.0,Parrnell Overal,poveralar@tiny.cc,Argentina,18/10/2026,invalid_date
+,Donny Pellitt,dpellittau@indiatimes.com,Russia,13/3/2026,"missing_values, duplicate_customer_id"
+397.0,Dorena O'Fielly,dofiellyb0@sun.com,Madagascar,6/11/2026,invalid_date
+399.0,,rnormandaleb2@de.vu,Sweden,1/10/2025,missing_values
+405.0,Moritz Humbie,mhumbieb8@plala.or.jp,Chia,4/12/2026,invalid_date
+406.0,Crin Twyford,,Ukraine,7/7/2025,"missing_values, invalid_email"
+408.0,Grover Vicarey,gvicareybb@mit.edu,China,16/11/2026,invalid_date
+409.0,Raquel Grewes,rgrewesbc@DION.ne.jp,Brazil,27/12/2026,invalid_date
+415.0,Freedman Ebbs,febbsbi@nih.gov,Dominican Republic,5/12/2026,invalid_date
+416.0,Annmarie Spellissy,aspellissybj@wunderground.com,Norway,9/10/2026,invalid_date
+417.0,,srunseybk@github.io,Japan,26/5/2026,missing_values
+,Sheridan Pomphrett,spomphrettbr@examiner.com,Indonesia,29/12/2025,"missing_values, duplicate_customer_id"
+425.0,Nissy Beechcraft,nbeechcraftbs@soup.io,,5/5/2026,missing_values
+426.0,Anderson Hirtz,ahirtzbt@booking.com,Ukraine,18/1/2027,invalid_date
+433.0,Kristoffer Haug,khaugc0@dailymotion.com,Thailand,24/1/2027,invalid_date
+434.0,,gvenediktovc1@ucla.edu,Finland,5/6/2026,missing_values
+435.0,Beatrice Waddilow,bwaddilowc2@dagondesign.com,Japan,14/1/2027,invalid_date
+437.0,Rahal Furlonge,rfurlongec4@baidu.com,Honduras,12/9/2026,invalid_date
+438.0,Lesya Moorcroft,lmoorcroftc5@linkedin.com,China,26/1/2027,invalid_date
+442.0,Else Martina,emartinac9@sourceforge.net,Mexico,8/11/2026,invalid_date
+445.0,Van Pierton,vpiertoncc@flickr.com,China,28/9/2026,invalid_date
+447.0,Sharon Fendlen,sfendlence@sina.com.cn,Finland,21/10/2026,invalid_date
+448.0,Guinevere Baldcock,gbaldcockcf@weebly.com,Japan,,"missing_values, invalid_date"
+463.0,Tommy Storkes,tstorkescu@webs.com,China,10/12/2026,invalid_date
+467.0,Edgard Pulsford,epulsfordcy@pagesperso-orange.fr,Portugal,16/11/2026,invalid_date
+469.0,Candis Cunde,ccunded0@comcast.net,Cyprus,,"missing_values, invalid_date"
+474.0,Sallyanne Piperley,spiperleyd5@cdc.gov,Philippines,13/10/2026,invalid_date
+479.0,Netty McComiskie,nmccomiskieda@dot.gov,Indonesia,,"missing_values, invalid_date"
+,Wood Bush,wbushdb@printfriendly.com,Russia,7/4/2026,"missing_values, duplicate_customer_id"
+485.0,Tine Chaplin,tchaplindg@gmpg.org,Indonesia,,"missing_values, invalid_date"
+486.0,Rodney Merchant,rmerchantdh@weebly.com,Indonesia,25/9/2026,invalid_date
+489.0,Griz Durrett,gdurrettdk@upenn.edu,Poland,20/10/2026,invalid_date
+490.0,Faun Mercer,fmercerdl@buzzfeed.com,Netherlands,26/9/2026,invalid_date
+494.0,,cdultondp@sina.com.cn,Russia,9/5/2025,missing_values
+498.0,,kpedrozzidt@biblegateway.com,Russia,29/10/2025,missing_values
+499.0,Shaylah Estabrook,,Argentina,9/7/2026,"missing_values, invalid_email"
+500.0,Chen Snarr,csnarrdv@storify.com,Belarus,17/12/2026,invalid_date
+501.0,Nixie Caulcutt,ncaulcuttdw@berkeley.edu,Brazil,15/9/2026,invalid_date
+,Regan Raison,rraisone1@aboutads.info,Philippines,6/10/2026,"missing_values, invalid_date, duplicate_customer_id"
+508.0,Antony Commin,acommine3@tmall.com,China,13/11/2026,invalid_date
+509.0,Maurise Le Provest,mlee4@ucoz.ru,Indonesia,,"missing_values, invalid_date"
+511.0,Shel Chaddock,schaddocke6@mail.ru,Tanzania,23/10/2026,invalid_date
+,Amos Shayler,ashaylere7@oakley.com,Sweden,30/7/2025,"missing_values, duplicate_customer_id"
+513.0,Kesley Ivory,kivorye8@example.com,Brazil,10/12/2026,invalid_date
+514.0,Ruthi Baron,rbarone9@wikipedia.org,Brazl,29/12/2026,invalid_date
+516.0,Astrid Chessill,achessilleb@netvibes.com,Argentina,5/10/2026,invalid_date
+528.0,Audie Ploughwright,aploughwrighten@jalbum.net,Dominican Republic,18/12/2026,invalid_date
+530.0,Faye Trevains,ftrevainsep@zimbio.com,Portugal,31/10/2026,invalid_date
+536.0,Isacco Sowden,isowdenev@sphinn.com,,9/5/2026,missing_values
+539.0,Herbert Seedull,hseedulley@google.com.hk,China,21/1/2027,invalid_date
+542.0,Cathe Oliveti,colivetif1@cam.ac.uk,Indonesia,,"missing_values, invalid_date"
+543.0,Reese Tharme,rtharmef2@state.tx.us,Indonesia,21/12/2026,invalid_date
+544.0,Dur Ruzic,druzicf3@sitemeter.com,Indonesia,18/1/2027,invalid_date
+546.0,Bancroft Dilkes,bdilkesf5@cnn.com,Palestinian Territory,24/12/2026,invalid_date
+551.0,Wrennie Worshall,wworshallfa@sfgate.com,Cambodia,,"missing_values, invalid_date"
+554.0,Ginger de Amaya,gdefd@de.vu,China,,"missing_values, invalid_date"
+558.0,Jamill Breheny,jbrehenyfh@google.cn,Sweden,1/11/2026,invalid_date
+560.0,Sofia Duding,sdudingfj@oaic.gov.au,Tunisia,26/10/2026,invalid_date
+561.0,,rbernardtfk@rediff.com,Czech Republic,22/6/2026,missing_values
+564.0,Kevyn Redmayne,kredmaynefn@mapquest.com,,7/6/2026,missing_values
+565.0,Lyndell Le Marchand,llefo@wordpress.com,Belarus,19/12/2026,invalid_date
+567.0,Calida Royall,croyallfq@blogtalkradio.com,Indonesia,18/10/2026,invalid_date
+569.0,Phillip Umpleby,pumplLebyfs@npr.org,Haiti,22/12/2025,duplicate_customer_id
+570.0,Darius Josephson,djosephsonft@answers.com,Colombia,25/6/2026,duplicate_customer_id
+571.0,Kelsey M'Quhan,kmquhanfu@jalbum.net,Rusia,8/11/2026,"invalid_date, duplicate_customer_id"
+573.0,Isidor Abrahamoff,iabrahamofffw@fda.gov,Indonesia,14/12/2026,invalid_date
+574.0,,mjohantgesfx@desdev.cn,United Kingdom,21/11/2025,missing_values
+575.0,Jenna Colthurst,jcolthurstfy@samsung.com,France,18/1/2027,invalid_date
+576.0,Nevsa Jandel,njandelfz@mysql.com,China,13/11/2026,invalid_date
+577.0,Katleen Boatman,kboatmang0@ycombinator.com,Peru,12/11/2026,invalid_date
+578.0,Bianka Nickell,bnickellg1@mail.ru,China,10/12/2026,invalid_date
+582.0,Bertram Well,,China,2/6/2025,"missing_values, invalid_email"
+,Tamarra Olwen,tolwengi@dagondesign.com,Russia,15/2/2026,"missing_values, duplicate_customer_id"
+597.0,Red Bassil,rbassilgk@hugedomains.com,,10/3/2026,missing_values
+598.0,Shelby Jeskins,sjeskinsgl@people.com.cn,China,21/10/2026,invalid_date
+601.0,Sena Birtles,sbirtlesgo@statcounter.com,Albania,6/12/2026,invalid_date
+608.0,Tibold Halmkin,thalmkingv@si.edu,Morocco,24/9/2026,invalid_date
+609.0,Frederigo Loakes,floakesgw@aboutads.info,,5/7/2025,missing_values
+613.0,Karlene Redferne,kredferneh0@sohu.com,France,28/10/2026,invalid_date
+621.0,Annelise Govini,agovinih8@google.pl,China,19/10/2026,invalid_date
+622.0,Aurelie Andreacci,aandreaccih9@webs.com,Swaziland,,"missing_values, invalid_date"
+623.0,Therese Lamba,tlambaha@mit.edu,Ecuador,,"missing_values, invalid_date"
+626.0,Frankie Buntine,fbuntinehd@samsung.com,China,5/10/2026,invalid_date
+636.0,Edvard Siddle,esiddlehn@edublogs.org,Thailand,24/10/2026,invalid_date
+637.0,,dgoodieho@cocolog-nifty.com,Philippines,14/7/2026,missing_values
+643.0,Celinka Leathley,cleathleyhu@google.ru,China,28/9/2026,invalid_date
+646.0,Ambrosi Canlin,acanlinhx@freewebs.com,Albania,13/10/2026,invalid_date
+650.0,Willy Bellwood,wbellwoodi1@weebly.com,Bosnia and Herzegovina,27/11/2026,invalid_date
+,Merwin Rawcliff,mrawcliffi4@un.org,China,21/7/2025,"missing_values, duplicate_customer_id"
+655.0,Rosetta Andriuzzi,randriuzzii6@blogspot.com,Russia,18/1/2027,invalid_date
+569.0,Phillip Umpleby,pumplLebyfs@npr.org,Haiti,22/12/2025,duplicate_customer_id
+570.0,Darius Josephson,djosephsonft@answers.com,Colombia,25/6/2026,duplicate_customer_id
+571.0,Kelsey M'Quhan,kmquhanfu@jalbum.net,Russia,8/11/2026,"invalid_date, duplicate_customer_id"
+660.0,Natty Copestake,ncopestakeib@thetimes.co.uk,,13/9/2025,missing_values
+661.0,Leticia Heathfield,lheathfieldic@uiuc.edu,Canada,8/11/2026,invalid_date
+666.0,Nealy Hallihane,nhallihaneih@huffingtonpost.com,Peru,,"missing_values, invalid_date"
+667.0,Maynord Cavan,mcavanii@ed.gov,Indonesia,12/10/2026,invalid_date
+669.0,Carmen Burgyn,cburgynik@businessweek.com,Portugal,,"missing_values, invalid_date"
+670.0,Artur Siemantel,asiemantelil@exblog.jp,China,,"missing_values, invalid_date"
+673.0,Giles Budnik,gbudnikio@jugem.jp,Philippines,3/12/2026,invalid_date
+675.0,Nikos Routledge,nroutledgeiq@histats.com,China,30/11/2026,invalid_date
+677.0,Francyne Dimmick,fdimmickis@opensource.org,Guatemala,13/9/2026,invalid_date
+687.0,Bernete Blaxeland,bblaxelandj2@psu.edu,Argentina,7/3/2026,duplicate_customer_id
+681.0,Efren Eccleston,eecclestoniw@deviantart.com,,17/12/2025,missing_values
+687.0,Bernete Blaxeland,bblaxelandj2@psu.edu,Argentina,7/3/2026,duplicate_customer_id
+688.0,Elizabet Hartropp,ehartroppj3@hexun.com,Yemen,24/10/2026,invalid_date
+695.0,Mara Spancock,mspancockja@wordpress.com,Indonesia,1/10/2026,invalid_date
+704.0,Amory Brasted,abrastedjj@hexun.com,Somalia,,"missing_values, invalid_date"
+705.0,Robinet Awin,rawinjk@newsvine.com,Brazil,15/1/2027,invalid_date
+709.0,Ephraim Bewshire,ebewshirejo@psu.edu,Russia,26/11/2026,invalid_date
+713.0,Mozes Henighan,mhenighanjs@fastcompany.com,Croatia,21/10/2026,invalid_date
+714.0,Arnie Nazaret,anazaretjt@wunderground.com,Poland,,"missing_values, invalid_date"
+718.0,Merralee Tawn,mtawnjx@icio.us,,4/10/2025,missing_values
+720.0,Ariana Gonnin,agonninjz@amazon.de,Lithuania,22/1/2027,"invalid_date, duplicate_customer_id"
+721.0,Dino Branca,dbrancak0@cbslocal.com,Russia,5/10/2026,"invalid_date, duplicate_customer_id"
+725.0,Derick Bonder,dbonderk4@dropbox.com,Sri Lanka,,"missing_values, invalid_date"
+728.0,,ktissingtonk7@time.com,Portugal,20/9/2026,"missing_values, invalid_date"
+733.0,Berti Kenningley,bkenningleykc@google.de,Sudan,30/10/2026,invalid_date
+734.0,Jourdain Perutto,jperuttokd@army.mil,Indonesia,26/12/2026,invalid_date
+737.0,,ldederickkg@photobucket.com,Philippines,16/1/2027,"missing_values, invalid_date"
+741.0,,lwindhamkk@walmart.com,Philippines,13/6/2026,missing_values
+742.0,,cpeckittkl@google.ca,Indonesia,27/9/2025,missing_values
+743.0,Leda Sturdy,lsturdykm@jiathis.com,Russia,13/10/2026,invalid_date
+745.0,Tyler Yarker,tyarkerko@goo.gl,Croatia,18/12/2026,invalid_date
+746.0,Ashbey Quinnell,aquinnellkp@economist.com,Spain,18/11/2026,invalid_date
+747.0,,hmartyginkq@vimeo.com,Indonesia,1/6/2026,missing_values
+748.0,Bryana Dimitresco,bdimitrescokr@tinypic.com,Mexico,21/1/2027,invalid_date
+750.0,Saul Thewless,sthewlesskt@scientificamerican.com,Indonesia,26/11/2026,invalid_date
+753.0,Oralle Augustus,oaugustuskw@yelp.com,Colombia,9/10/2026,invalid_date
+754.0,Vicki Hanney,vhanneykx@census.gov,Sweden,13/10/2026,invalid_date
+755.0,Elle McGenis,,Philippines,10/1/2026,"missing_values, invalid_email"
+759.0,Sianna Twinbrow,stwinbrowl2@nytimes.com,Albania,3/11/2026,invalid_date
+720.0,Ariana Gonnin,agonninjz@amazon.de,Lithuania,22/1/2027,"invalid_date, duplicate_customer_id"
+721.0,Dino Branca,dbrancak0@cbslocal.com,Russia,5/10/2026,"invalid_date, duplicate_customer_id"
+767.0,,dvaninla@webnode.com,China,20/8/2026,missing_values
+768.0,Keir Aleksandrev,kaleksandrevlb@google.de,China,,"missing_values, invalid_date"
+773.0,Dionisio Gittins,dgittinslg@slideshare.net,,15/6/2025,missing_values
+774.0,Lorrie Scrane,lscranelh@abc.net.au,China,15/1/2027,invalid_date
+776.0,Phylis Wildber,pwildberlj@gmpg.org,China,25/10/2026,invalid_date
+781.0,Marnie Bleibaum,mbleibaumlo@instagram.com,China,16/11/2026,invalid_date
+784.0,Demetris Gilliatt,dgilliattlr@blog.com,China,,"missing_values, invalid_date"
+787.0,Lezlie Kerins,lkerinslu@nba.com,Portugal,26/1/2027,invalid_date
+789.0,Linea Farnfield,lfarnfieldlw@mac.com,East Timor,2/3/2026,duplicate_customer_id
+790.0,Gennifer Olivie,golivielx@yale.edu,Sweden,12/12/2026,invalid_date
+794.0,Eugenie Ascrofte,eascroftem1@prweb.com,Brazil,13/1/2027,invalid_date
+799.0,Zonda Klimmek,zklimmekm6@discuz.net,Poland,12/1/2027,invalid_date
+800.0,Dolley Standbrooke,dstandbrookem7@delicious.com,Philippines,8/1/2027,invalid_date
+806.0,Kat Bunney,kbunneymd@naver.com,Ukraine,7/10/2026,invalid_date
+823.0,Mollie Ravilus,mravilusmu@51.la,Portugal,2/1/2027,invalid_date
+824.0,,cbreamv@moonfruit.com,Nigeria,2/5/2026,missing_values
+826.0,Roseanne Charon,rcharonmx@cdbaby.com,China,11/1/2027,invalid_date
+842.0,Kira Scorthorne,kscorthornend@squarespace.com,China,15/12/2025,duplicate_customer_id
+828.0,Pate Izon,pizonmz@sitemeter.com,Norway,17/11/2026,invalid_date
+789.0,Linea Farnfield,lfarnfieldlw@mac.com,East Timor,2/3/2026,duplicate_customer_id
+833.0,Artair Ketch,aketchn4@ifeng.com,,6/10/2026,"missing_values, invalid_date"
+836.0,,tcleatherown7@netvibes.com,China,10/8/2025,missing_values
+837.0,Adolpho Lamberteschi,alamberteschin8@arizona.edu,Philippines,9/11/2026,invalid_date
+838.0,Dasi Renvoys,drenvoysn9@vimeo.com,Indonesia,29/9/2026,invalid_date
+841.0,Jacquie Pinchin,,Dominican Republic,8/6/2026,"missing_values, invalid_email"
+842.0,Kira Scorthorne,kscorthornend@squarespace.com,China,15/12/2025,duplicate_customer_id
+843.0,Hettie Klimentov,hklimentovne@economist.com,Peru,,"missing_values, invalid_date"
+844.0,Gwen Kigelman,gkigelmannf@jugem.jp,Serbia,8/12/2026,invalid_date
+847.0,Noell Lehenmann,nlehenmannni@rediff.com,Laos,7/1/2027,invalid_date
+850.0,Ware Shiel,wshielnl@wired.com,China,10/1/2027,invalid_date
+852.0,,jleftridgenn@answers.com,Brazil,5/12/2025,missing_values
+858.0,Roi Wasmer,rwasmernt@oakley.com,Indonesia,7/10/2026,invalid_date
+859.0,Codie Onyon,conyonnu@google.es,Norway,5/12/2026,invalid_date
+862.0,Laurene Abeau,labeaunx@nsw.gov.au,Argentina,14/10/2026,invalid_date
+,Thoma Bettenay,tbettenaynz@hao123.com,Indonesia,12/3/2026,"missing_values, duplicate_customer_id"
+868.0,Marthena McGrudder,mmcgruddero3@economist.com,Russia,20/9/2026,invalid_date
+869.0,Mamie Harmon,mharmono4@amazonaws.com,Poland,21/11/2026,invalid_date
+870.0,Winny Lissenden,wlissendeno5@spiegel.de,Slovenia,12/1/2027,invalid_date
+871.0,Sherry Deble,sdebleo6@liveinternet.ru,Ecuador,,"missing_values, invalid_date"
+872.0,Shena Seivertsen,sseivertseno7@edublogs.org,Indonesia,23/10/2026,invalid_date
+875.0,Libbie De Ath,ldeoa@ihg.com,Croatia,3/12/2026,invalid_date
+886.0,Pincus Colliss,pcollissol@geocities.jp,Indonesia,5/1/2027,invalid_date
+888.0,,falexandreon@narod.ru,Mexico,17/11/2025,missing_values
+890.0,Stanton Segges,sseggesop@plala.or.jp,Bolivia,8/1/2027,invalid_date
+891.0,Jedd Ben,jbenoq@marketwatch.com,Peru,18/12/2026,invalid_date
+895.0,,kraggou@reverbnation.com,Iran,26/9/2025,missing_values
+900.0,,ddanaoz@oakley.com,China,29/10/2026,"missing_values, invalid_date"
+910.0,,vzanardiip9@youku.com,France,25/8/2026,missing_values
+911.0,,vyerbypa@ebay.co.uk,,,"missing_values, invalid_date"
+913.0,Nealson Spitaro,nspitaropc@rakuten.co.jp,Jordan,21/11/2026,invalid_date
+915.0,Rubin Woolfitt,,Papua New Guinea,4/6/2026,"missing_values, invalid_email"
+920.0,Web Bramhill,wbramhillpj@who.int,Brazil,19/1/2027,invalid_date
+924.0,Ninette Fairpool,nfairpoolpn@dropbox.com,Ukraine,30/9/2026,invalid_date
+,Angelle Trase,atrasept@usatoday.com,Albania,2/7/2026,"missing_values, duplicate_customer_id"
+931.0,Ira Menendez,imenendezpu@gravatar.com,United States,25/1/2027,invalid_date
+932.0,Heather Hanaford,hhanafordpv@hp.com,Malaysia,12/12/2026,invalid_date
+933.0,Lynelle Wyne,lwynepw@yandex.ru,Indonesia,19/10/2026,invalid_date
+938.0,,mbartolomucciq1@furl.net,,18/2/2026,missing_values
+939.0,Louise Daltry,ldaltryq2@nytimes.com,North Korea,14/12/2026,invalid_date
+947.0,Gerri Januszewicz,gjanuszewiczqa@pen.io,Peru,30/9/2026,invalid_date
+949.0,Isa Acreman,iacremanqc@ucoz.com,Portugal,30/10/2026,invalid_date
+,Prent Busby,pbusbyqe@webnode.com,Kazakhstan,3/5/2026,"missing_values, duplicate_customer_id"
+957.0,Cyndie Lies,cliesqk@bizjournals.com,Poland,27/12/2026,invalid_date
+960.0,Margie M'Quharge,mmquhargeqn@tamu.edu,Indonesia,9/11/2026,invalid_date
+962.0,Tess Oldknowe,toldknoweqp@theglobeandmail.com,Brazil,28/1/2027,invalid_date
+965.0,,kkaiserqs@simplemachines.org,Bulgaria,27/1/2026,missing_values
+971.0,Aurel Okenfold,aokenfoldqy@facebook.com,Indonesia,,"missing_values, invalid_date"
+972.0,Simon Askin,saskinqz@kickstarter.com,Georgia,1/10/2026,invalid_date
+975.0,Annetta Lascell,alascellr2@digg.com,Indonesia,11/1/2027,invalid_date
+984.0,Gavra Hitcham,ghitchamrb@hostgator.com,Yemen,29/11/2026,invalid_date
+985.0,,jfenimorerc@go.com,United States,10/6/2025,missing_values
+987.0,Kim Skace,kskacere@walmart.com,Brazil,25/12/2026,invalid_date
+988.0,Keane Nell,knellrf@ebay.com,Indonesia,30/1/2027,invalid_date
+991.0,Meredith Brice,mbriceri@umn.edu,Philippines,10/12/2026,invalid_date
+992.0,Werner De Malchar,wderj@disqus.com,Argentina,14/11/2026,invalid_date
+997.0,Tove Redfern,tredfernro@pagesperso-orange.fr,Greece,6/12/2026,invalid_date
+,Perkin Sail,psailrp@github.io,United States,18/10/2025,"missing_values, duplicate_customer_id"
+1000.0,Wood Gammett,wgammettrr@dailymotion.com,Poland,25/9/2026,invalid_date

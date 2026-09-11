@@ -10,7 +10,7 @@ LIMIT 10;
 
 -- Which customers have placed the most orders?
 
-SELECT c.name, count(o.order_id) as total_orders
+SELECT c.name, count(DISTINCT o.order_id) as total_orders
 FROM customers as c
 join orders as o
 on o.customer_id = c.customer_id

@@ -1,0 +1,10 @@
+{
+    "input rows": 142,
+    "valid rows": 76,
+    "rejected rows": 66,
+    "validation failures": {
+        "missing_values": 14,
+        "invalid_date": 40,
+        "invalid_quantity": 16
+    }
+}

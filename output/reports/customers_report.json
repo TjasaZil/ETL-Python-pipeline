@@ -1,0 +1,11 @@
+{
+    "input rows": 1014,
+    "valid rows": 673,
+    "rejected rows": 341,
+    "validation failures": {
+        "missing_values": 115,
+        "invalid_email": 25,
+        "invalid_date": 247,
+        "duplicate_customer_id": 48
+    }
+}
