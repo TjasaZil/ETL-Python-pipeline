@@ -34,7 +34,7 @@ ETL-Python-pipeline/
 |-- .github/
 |  |-- workflows/
 |  |  |-- allow-merge-to-main.yml
-|  |  |--auto-pr.yml
+|  |  |-- auto-pr.yml
 | 
 |-- data/
 |  |-- customers.csv
@@ -153,7 +153,7 @@ This prevents rejected records from being counted more than once.
 The transformation stage cleans and standardizes the raw data after validation. Examples of transformations include: <br>
 
 - removing leading and trailing whitespace
-- normalizing muiltiple spaces
+- normalizing multiple spaces
 - standardizing names using 'Title Case'
 - converting emails to lowercase
 - converting country names to country codes
@@ -193,13 +193,15 @@ Loaded data can then be queried using SQL.
 We can do some analysis using the cleaned and transformed data from the dataset.
 Here are some of the questions that we can explore, using different queries:
 
-- Which products have been ordered the most?=
+- Top 10 most ordered products of all time.
 - Which customers have placed the most orders?
 - What is the total quantity sold for each product?
-- What is the total revenue by product category
-- Which customers generated the highest revenue
+- What is the total revenue by product category?
+- Which customers generated the highest revenue?
 - How many orders were placed each day?
 - Which products have never been ordered?
+- Which month were the most customers 'created'?
+- Which countries are most customers from?
 
 Example queries are written in the `sql_analysis/` folder
 
@@ -253,20 +255,20 @@ python -m src.main
 There are three individual pipelines, one for each dataset. The pipeline extracts data from the `.csv` file, validates it against specific rules and removes invalid rows into it's own `.csv` files.
 Valid data is then transformed and loaded into MySQL database.<br>
 After the execution of the pipelines the database should be populated with tables and there should be an `output/` folder in the repository.<br>
-Invalid data are stored in `output/invalid` folder and simple reports are generated in the `output/reports` folder.
+Invalid data are stored in `output/invalid/` folder and simple reports are generated in the `output/reports/` folder.
 
 ## Future improvements:
 
 - [ ] containerizing the application with Docker
 - [ ] adding a Docker Compose setup for MySQL
-- [x] adding a CI/CD pipeline with GitHub Actions - *[added on 11.09.2026 - pipeline for auto-pr to `development` branch]*
+- [x] **adding a CI/CD pipeline with GitHub Actions** - *[added on 11.09.2026 - pipeline for auto-pr to `development` branch]*
 - [ ] adding tests using pytest
 - [ ] improving pipeline configuration
 - [ ] adding database schema migrations
 - [ ] adding pipeline execution metrics
 - [ ] scheduling the pipeline
 - [ ] adding monitoring and alerting
-- [x] restrict `master` branch - *[added on 11.09.2026 - `master` branch requires PR before merge]*
+- [x] **restrict `master` branch** - *[added on 11.09.2026 - `master` branch requires PR before merge]*
 
 ## What this project demonstrates:
 

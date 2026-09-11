@@ -1,4 +1,5 @@
 pandas
+mypysql
 sqlalchemy
 python-dotenv
 logging
