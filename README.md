@@ -45,6 +45,9 @@ ETL-Python-pipeline/
 |  |  |-- orders_report.json
 |  |  |-- products_report.json
 |
+|-- sql_analysis/
+|  |-- example.sql
+|
 |-- src/
 |  |-- functions/
 |  |  |-- extract.py
@@ -179,7 +182,7 @@ After the transformation and validation, only valid records are loaded into a My
 Each dataset is loaded into a separate table, with a name corresponding to the dataset name.
 Loaded data can then be queried using SQL.
 
-### SQL Analysis [TO IMPLEMENT]
+### SQL Analysis
 
 We can do some analysis using the cleaned and transformed data from the dataset.
 Here are some of the questions that we can explore, using different queries:
@@ -192,7 +195,7 @@ Here are some of the questions that we can explore, using different queries:
 - How many orders were placed each day?
 - Which products have never been ordered?
 
-Example queries are written in the `sql_scripts\` folder
+Example queries are written in the `sql_analysis\` folder
 
 ## Configuration
 Database credentials are stored in environment variables rather than directly in the source code.<br>
