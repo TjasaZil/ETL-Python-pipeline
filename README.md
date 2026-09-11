@@ -32,6 +32,7 @@ ETL-Python-pipeline/
 |
 |-- .github/
 |  |-- workflows/
+|  |  |-- allow-merge-to-main.yml
 |  |  |--auto-pr.yml
 | 
 |-- data/
