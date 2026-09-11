@@ -16,6 +16,6 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - name: create-pull-request
-        uses: diillson/auto-pull-request@v1.0.1
+        uses: diillson/auto-pull-request@4cf50b3681cd76250f37841466e61e514a377064
         with:
           destination_branch: "development"

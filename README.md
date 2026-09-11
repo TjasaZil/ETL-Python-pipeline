@@ -21,6 +21,7 @@ The goal is to ensure that only valid and cleaned data is loaded into the databa
 - Pandas
 - MySQL
 - SQLAlchemy
+- PyMySQL
 - Python-dotenv
 - Git / GitHub
 - Logging
@@ -67,7 +68,7 @@ ETL-Python-pipeline/
 |  |-- country_codes.py
 |  |-- main.py
 |
-|-- .example.env
+|-- .env.example
 |-- .gitignore
 |-- README.md
 

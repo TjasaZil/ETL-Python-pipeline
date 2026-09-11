@@ -5,8 +5,8 @@ from src.functions.report import add_rejection_reasons, save_invalid_data, creat
 from src.functions.transform import transform_products
 from src.functions.load import load_to_sql
 
-products_invalid_path ="../output/invalid/products_invalid.csv"
-products_report_path ="../output/reports/products_report.json"
+products_invalid_path ="/output/invalid/products_invalid.csv"
+products_report_path ="/output/reports/products_report.json"
 
 def products_pipeline(file_path):
     #extract data

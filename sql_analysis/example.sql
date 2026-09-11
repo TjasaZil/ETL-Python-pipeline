@@ -6,7 +6,7 @@ LEFT JOIN products AS p
 ON o.product_id = p.product_id
 GROUP BY o.product_id, p.name
 ORDER BY total_quantity DESC
-LIMIT 10
+LIMIT 10;
 
 -- Which customers have placed the most orders?
 
@@ -15,7 +15,7 @@ FROM customers as c
 join orders as o
 on o.customer_id = c.customer_id
 group by c.customer_id, c.name
-order by total_orders desc
+order by total_orders desc;
 
 -- What is the total quantity sold for each product?
 -- select o.product_id, p.name, sum(quantity) as quantity_sold
@@ -45,4 +45,4 @@ order by total_orders desc
 
 -- which month were the most customers 'created'
 -- which countries are most customers from?
--- ratio etween food and non food items ordered
+-- ratio between food and non food items ordered
