@@ -30,6 +30,10 @@ The goal is to ensure that only valid and cleaned data is loaded into the databa
 ```
 ETL-Python-pipeline/
 |
+|-- .github/
+|  |-- workflows/
+|  |  |--auto-pr.yml
+| 
 |-- data/
 |  |-- customers.csv
 |  |-- orders.csv
@@ -253,14 +257,14 @@ Invalid data are stored in `output/invalid` folder and simple reports are genera
 
 - [ ] containerizing the application with Docker
 - [ ] adding a Docker Compose setup for MySQL
-- [ ] adding a CI/CD pipeline with GitHub Actions
+- [x] adding a CI/CD pipeline with GitHub Actions - *[added on 11.0.2026 - pipeline for auto-pr to `development` branch]*
 - [ ] adding tests using pytest
 - [ ] improving pipeline configuration
 - [ ] adding database schema migrations
 - [ ] adding pipeline execution metrics
 - [ ] scheduling the pipeline
 - [ ] adding monitoring and alerting
-- [ ] restrict `main` branch
+- [x] restrict `master` branch - *[added on 11.09.2026 - `master` branch requires PR before merge]*
 
 ## What this project demonstrates:
 
