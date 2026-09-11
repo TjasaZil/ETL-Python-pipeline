@@ -260,6 +260,7 @@ Invalid data are stored in `output/invalid` folder and simple reports are genera
 - [ ] adding pipeline execution metrics
 - [ ] scheduling the pipeline
 - [ ] adding monitoring and alerting
+- [ ] restrict `main` branch
 
 ## What this project demonstrates:
 

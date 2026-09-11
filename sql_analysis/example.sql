@@ -42,3 +42,7 @@ order by total_orders desc
 -- How many orders were placed each day?
 
 -- Which products have never been ordered?
+
+-- which month were the most customers 'created'
+-- which countries are most customers from?
+-- ratio etween food and non food items ordered
