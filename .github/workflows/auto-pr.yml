@@ -1,8 +1,9 @@
 name: Auto PR
 on:
   push:
-    branches:
-    - 'pipeline/**'
+    branches-ignore:
+    - master
+    - development
 
 permissions:
   contents: read
