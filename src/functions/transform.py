@@ -7,8 +7,6 @@ from ..country_codes import country_codes
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# 2. transform the data
-
 #Changes the full country name to the ISO3166 code
 def iso_country_code(df):
     try:
