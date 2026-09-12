@@ -27,3 +27,4 @@ def load_to_sql(df, table_name):
         logger.info(f'Table {table_name} successfully loaded into the database {db_database} as {table_name}')
     except Exception as e:
         logger.exception(f"Something went wrong when loading the table into the database: {e}")
+        raise

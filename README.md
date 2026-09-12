@@ -13,7 +13,7 @@ The pipeline processes three datasets:
 - Orders - customer orders and purchased products
 
 Each dataset goes through its own ETL pipeline.
-The goal is to ensure that only valid and cleaned data is loaded into the database, while invalid records are removed and perserved separately.
+The goal is to ensure that only valid and cleaned data is loaded into the database, while invalid records are removed and preserved separately.
 
 ## Technologies:
 
@@ -25,6 +25,7 @@ The goal is to ensure that only valid and cleaned data is loaded into the databa
 - Python-dotenv
 - Git / GitHub
 - Logging
+- pathlib
 
 ## Project structure
 
@@ -47,7 +48,7 @@ ETL-Python-pipeline/
 |  |  |-- orders_invalid.csv
 |  |  |-- products_invalid.csv
 |  |-- reports/
-|  |  |-- customres_report.json
+|  |  |-- customers_report.json
 |  |  |-- orders_report.json
 |  |  |-- products_report.json
 |
@@ -67,6 +68,7 @@ ETL-Python-pipeline/
 |  |  |-- products.py
 |  |-- country_codes.py
 |  |-- main.py
+|  |--- paths.py
 |
 |-- .env.example
 |-- .gitignore
@@ -80,73 +82,6 @@ ETL-Python-pipeline/
 
 The extraction step reads the source CSV files using Pandas.</br>
 The files from where we are extracting the data are in the `data/` folder
-
-### Validate
-
-Before transformation, the data is validated against rules, specific to each dataset.
-
-**Customers:**
-
-- `customer_id` must not be NULL
-- `name` must not be NULL
-- `email` must not be NULL
-- `email` must have a valid format
-- `country` must not be NULL
-- `created_at` must be a valid date
-- `records` should not be duplicated
-
-**Products:**
-
-- `product_id` must not be NULL
-- `name` must not be NULL
-- `category` must not be NULL
-- `quantity` must be greater than 0
-- `order_date` must be valid date
-- `records` should not be duplicated
-
-**Orders:**
-
-- `order_id` must not be NULL
-- `customer_id` must not be null
-- `product_id` must not be null
-- `quantity` must be greater than 0
-- `order_date` must be valid
-
-Validation is performed independently for each rule so that a single record san have multiple validation errors (this is done for more extensive reporting)
-
-### Invalid data handling
-
-Invalid records are not just deleted.<br>
-Each dataset has it's own invalid output `.cvs` file, that is generated in the `output/invalid` folder and each record contains a `rejection_reason` column, where it is described why the row was rejected
-
-#### Validation statistics 
-
-The pipeline also generates validation statistic for each dataset. <br>
-The report distinguishes between:
-
-- **input rows** - total number of records read from the source file
-- **valid rows** - records that passed all validation rules
-- **rejected rows** - unique records that failed at least one validation rule
-- **validation failures** - number of times individual rules were violated
-
-**Example of validation statistics:**
-
-```
-{
-    "input rows": 1014,
-    "valid rows": 672,
-    "rejected rows": 342,
-    "validation failures": {
-        "missing_values": 115,
-        "invalid_email": 25,
-        "invalid_date": 248,
-        "duplicate_customer_id": 48
-    }
-}
-```
-
-A row can fail multiple validation rules. For instance one record can have a missing name, invalid email and invalid date. A record like that is counted once as rejected, but contributes to all three individual validation failure counters. <br>
-This prevents rejected records from being counted more than once.
 
 ### Transform
 
@@ -181,6 +116,71 @@ Example transformations:
 ```
 
 Dates are converted into proper date values, so that they can be stored in the database using an appropriate DATE column.
+
+### Validate
+
+After transformation, the data is validated against rules, specific to each dataset.
+
+**Customers:**
+
+- `customer_id` must not be NULL
+- `customer_id` must me unique
+- `name` must not be NULL
+- `email` must not be NULL
+- `email` must have a valid format
+- `country` must not be NULL
+- `created_at` must be a valid date
+
+**Products:**
+
+- `product_id` must not be NULL
+- `name` must not be NULL
+- `category` must not be NULL
+- `price` must be greater than 0
+- 
+**Orders:**
+
+- `order_id` must not be NULL
+- `customer_id` must not be null
+- `product_id` must not be null
+- `quantity` must be greater than 0
+- `order_date` must be valid
+
+Validation is performed independently for each rule so that a single record can have multiple validation errors (this is done for more extensive reporting)
+
+### Invalid data handling
+
+Invalid records are not just deleted.<br>
+Each dataset has it's own invalid output `.csv` file, that is generated in the `output/invalid` folder and each record contains a `rejection_reason` column, where it is described why the row was rejected
+
+#### Validation statistics 
+
+The pipeline also generates validation statistic for each dataset. <br>
+The report distinguishes between:
+
+- **input rows** - total number of records read from the source file
+- **valid rows** - records that passed all validation rules
+- **rejected rows** - unique records that failed at least one validation rule
+- **validation failures** - number of times individual rules were violated
+
+**Example of validation statistics:**
+
+```
+{
+    "input rows": 1014,
+    "valid rows": 672,
+    "rejected rows": 342,
+    "validation failures": {
+        "missing_values": 115,
+        "invalid_email": 25,
+        "invalid_date": 248,
+        "duplicate_customer_id": 48
+    }
+}
+```
+
+A row can fail multiple validation rules. For instance one record can have a missing name, invalid email and invalid date. A record like that is counted once as rejected, but contributes to all three individual validation failure counters. <br>
+This prevents rejected records from being counted more than once.
 
 ### Loading
 
