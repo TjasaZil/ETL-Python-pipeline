@@ -26,4 +26,4 @@ def products_pipeline(file_path):
     #load data to MySQL
     ready_for_db = transformed_df[validated_df["is_valid"]].copy()
     #print(ready_for_db)
-    load_to_sql(ready_for_db, table_name="products")
+    #load_to_sql(ready_for_db, table_name="products")

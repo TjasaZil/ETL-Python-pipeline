@@ -28,4 +28,4 @@ def customers_pipeline(file_path):
     #Load into database
     ready_for_db = transformed_df[validated_df["is_valid"]].copy()
     #print(ready_for_db)
-    load_to_sql(ready_for_db, table_name="customers")
+    #load_to_sql(ready_for_db, table_name="customers")

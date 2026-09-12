@@ -129,21 +129,32 @@ After transformation, the data is validated against rules, specific to each data
 - `email` must not be NULL
 - `email` must have a valid format
 - `country` must not be NULL
+- `created_at` must not be NULL
 - `created_at` must be a valid date
 
 **Products:**
 
 - `product_id` must not be NULL
+- `product_id` must be a numeric value
+- `product_id` must not be duplicated
 - `name` must not be NULL
 - `category` must not be NULL
+- `price` must be a numeric value
+- `price` must not be NULL
 - `price` must be greater than 0
 - 
 **Orders:**
 
 - `order_id` must not be NULL
+- `order_id` must be a numeric value
 - `customer_id` must not be null
+- `customer_id` must be a numeric value
 - `product_id` must not be null
+- `product_id` must be a numeric value
+- `quantity` must not be NULL
 - `quantity` must be greater than 0
+- `quantity` must be a numeric value
+- `order_date` must not be NULL
 - `order_date` must be valid
 
 Validation is performed independently for each rule so that a single record can have multiple validation errors (this is done for more extensive reporting)

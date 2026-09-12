@@ -7,9 +7,9 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 #checking for null values
-def check_for_null(df):
+def check_for_null(df, column):
     try:
-        return ~df.isnull().any(axis=1)
+        return ~df[column].isnull()
     except Exception as e:
         logger.exception(f" There was a problem when checking for null values: {e}")
 
@@ -53,10 +53,14 @@ def validate_positives(df, column):
 def validate_customers(df):
     try:
         validation_results = pd.DataFrame(index=df.index) #make a DataFrame for validation results
-        validation_results["missing_values"] = ~check_for_null(df)
-        validation_results["invalid_email"] = ~validate_email(df)
-        validation_results["invalid_date"] = ~validate_date(df, column ="created_at")
+        validation_results["missing_customer_id"] = ~check_for_null(df, column = "customer_id")
         validation_results["duplicate_customer_id"] = ~validate_duplicates(df, column='customer_id')
+        validation_results["missing_customer_name"] = ~check_for_null(df, column="name")
+        validation_results["missing_email"] = ~check_for_null(df, column="email")
+        validation_results["invalid_email"] = ~validate_email(df)
+        validation_results["missing_country"] = ~check_for_null(df, column="country")
+        validation_results["missing_date"]= ~check_for_null(df, column="created_at")
+        validation_results["invalid_date"] = ~validate_date(df, column ="created_at")
         validation_results["is_valid"] = ~validation_results.any(axis=1)
         return validation_results
     except Exception as e:
@@ -65,9 +69,12 @@ def validate_customers(df):
 def validate_products(df):
     try:
         validation_results = pd.DataFrame(index = df.index)
-        validation_results["missing_values"] = ~check_for_null(df)
-        validation_results["invalid_price"] = ~validate_positives(df, column="price")
+        validation_results["missing_product_id"] = ~check_for_null(df, column="product_id")
         validation_results["duplicate_product_id"] = ~validate_duplicates(df, column="product_id")
+        validation_results["missing_product_name"] = ~check_for_null(df, column="name")
+        validation_results["missing_category"]=~check_for_null(df, column="category")
+        validation_results["missing_price"]= ~check_for_null(df, column="price")
+        validation_results["invalid_price"] = ~validate_positives(df, column="price")
         validation_results["is_valid"] = ~validation_results.any(axis=1)
         return validation_results
     except Exception as e:
@@ -76,9 +83,14 @@ def validate_products(df):
 def validate_orders(df):
     try:
         validation_results = pd.DataFrame(index = df.index)
-        validation_results["missing_values"] = ~check_for_null(df)
-        validation_results["invalid_date"]= ~validate_date(df, column = "order_date")
-        validation_results["invalid_quantity"] = ~validate_positives(df, column = "quantity")
+        validation_results["missing_order_id"] = ~check_for_null(df, column="order_id")
+        validation_results["missing_customer_id"]= ~check_for_null(df, column="customer_id")
+        validation_results["missing_product_id"]= ~check_for_null(df, column="product_id")
+        validation_results["missing_quantity"]= ~check_for_null(df, column ="quantity")
+        validation_results["invalid_quantity"] = ~validate_positives(df, column="quantity")
+        validation_results["missing_order_date"]= ~check_for_null(df, column="order_date")
+        validation_results["invalid_order_date"]= ~validate_date(df, column = "order_date")
+
         validation_results["is_valid"] = ~validation_results.any(axis=1)
         return validation_results
     except Exception as e:

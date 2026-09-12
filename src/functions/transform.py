@@ -66,6 +66,7 @@ def transform_products(df):
         df = trim_whitespace(df, col="name")
         df = trim_whitespace(df, col="category")
         df = change_to_num(df, col="product_id")
+        df = change_to_num(df, col="price")
         return df
     except Exception as e:
         logger.exception(f"There was an error when transforming the product data: {e}")
