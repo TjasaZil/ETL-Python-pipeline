@@ -13,7 +13,7 @@ The pipeline processes three datasets:
 - Orders - customer orders and purchased products
 
 Each dataset goes through its own ETL pipeline.
-The goal is to ensure that only valid and cleaned data is loaded into the database, while invalid records are removed and perserved separately.
+The goal is to ensure that only valid and cleaned data is loaded into the database, while invalid records are removed and preserved separately.
 
 ## Technologies:
 
@@ -25,6 +25,7 @@ The goal is to ensure that only valid and cleaned data is loaded into the databa
 - Python-dotenv
 - Git / GitHub
 - Logging
+- pathlib
 
 ## Project structure
 
@@ -34,7 +35,7 @@ ETL-Python-pipeline/
 |-- .github/
 |  |-- workflows/
 |  |  |-- allow-merge-to-main.yml
-|  |  |--auto-pr.yml
+|  |  |-- auto-pr.yml
 | 
 |-- data/
 |  |-- customers.csv
@@ -47,12 +48,17 @@ ETL-Python-pipeline/
 |  |  |-- orders_invalid.csv
 |  |  |-- products_invalid.csv
 |  |-- reports/
-|  |  |-- customres_report.json
+|  |  |-- customers_report.json
 |  |  |-- orders_report.json
 |  |  |-- products_report.json
 |
 |-- sql_analysis/
-|  |-- example.sql
+|  |-- tables/
+|  |  |-- customers.sql
+|  |  |-- orders.sql
+|  |  |-- products.sql
+|  |-- database.sql
+|  |-- queries.sql
 |
 |-- src/
 |  |-- functions/
@@ -67,10 +73,12 @@ ETL-Python-pipeline/
 |  |  |-- products.py
 |  |-- country_codes.py
 |  |-- main.py
+|  |-- paths.py
 |
 |-- .env.example
 |-- .gitignore
 |-- README.md
+|-- requirements.txt
 
 ```
 
@@ -81,79 +89,12 @@ ETL-Python-pipeline/
 The extraction step reads the source CSV files using Pandas.</br>
 The files from where we are extracting the data are in the `data/` folder
 
-### Validate
-
-Before transformation, the data is validated against rules, specific to each dataset.
-
-**Customers:**
-
-- `customer_id` must not be NULL
-- `name` must not be NULL
-- `email` must not be NULL
-- `email` must have a valid format
-- `country` must not be NULL
-- `created_at` must be a valid date
-- `records` should not be duplicated
-
-**Products:**
-
-- `product_id` must not be NULL
-- `name` must not be NULL
-- `category` must not be NULL
-- `quantity` must be greater than 0
-- `order_date` must be valid date
-- `records` should not be duplicated
-
-**Orders:**
-
-- `order_id` must not be NULL
-- `customer_id` must not be null
-- `product_id` must not be null
-- `quantity` must be greater than 0
-- `order_date` must be valid
-
-Validation is performed independently for each rule so that a single record san have multiple validation errors (this is done for more extensive reporting)
-
-### Invalid data handling
-
-Invalid records are not just deleted.<br>
-Each dataset has it's own invalid output `.cvs` file, that is generated in the `output/invalid` folder and each record contains a `rejection_reason` column, where it is described why the row was rejected
-
-#### Validation statistics 
-
-The pipeline also generates validation statistic for each dataset. <br>
-The report distinguishes between:
-
-- **input rows** - total number of records read from the source file
-- **valid rows** - records that passed all validation rules
-- **rejected rows** - unique records that failed at least one validation rule
-- **validation failures** - number of times individual rules were violated
-
-**Example of validation statistics:**
-
-```
-{
-    "input rows": 1014,
-    "valid rows": 672,
-    "rejected rows": 342,
-    "validation failures": {
-        "missing_values": 115,
-        "invalid_email": 25,
-        "invalid_date": 248,
-        "duplicate_customer_id": 48
-    }
-}
-```
-
-A row can fail multiple validation rules. For instance one record can have a missing name, invalid email and invalid date. A record like that is counted once as rejected, but contributes to all three individual validation failure counters. <br>
-This prevents rejected records from being counted more than once.
-
 ### Transform
 
 The transformation stage cleans and standardizes the raw data after validation. Examples of transformations include: <br>
 
 - removing leading and trailing whitespace
-- normalizing muiltiple spaces
+- normalizing multiple spaces
 - standardizing names using 'Title Case'
 - converting emails to lowercase
 - converting country names to country codes
@@ -182,26 +123,150 @@ Example transformations:
 
 Dates are converted into proper date values, so that they can be stored in the database using an appropriate DATE column.
 
+### Validate
+
+After transformation, the data is validated against rules, specific to each dataset.
+
+**Customers:**
+
+- `customer_id` must not be NULL
+- `customer_id` must me unique
+- `name` must not be NULL
+- `email` must not be NULL
+- `email` must have a valid format
+- `country` must not be NULL
+- `created_at` must not be NULL
+- `created_at` must be a valid date
+
+**Products:**
+
+- `product_id` must not be NULL
+- `product_id` must be a numeric value
+- `product_id` must not be duplicated
+- `name` must not be NULL
+- `category` must not be NULL
+- `price` must be a numeric value
+- `price` must not be NULL
+- `price` must be greater than 0
+- 
+**Orders:**
+
+- `order_id` must not be NULL
+- `order_id` must be a numeric value
+- `customer_id` must not be null
+- `customer_id` must be a numeric value
+- `customer_id` must exist in the 'customer' table
+- `product_id` must not be null
+- `product_id` must be a numeric value
+- `product_id` must exist in the 'products' table
+- `quantity` must not be NULL
+- `quantity` must be greater than 0
+- `quantity` must be a numeric value
+- `order_date` must not be NULL
+- `order_date` must be valid
+
+Validation is performed independently for each rule so that a single record can have multiple validation errors (this is done for more extensive reporting)
+
+### Invalid data handling
+
+Invalid records are not just deleted.<br>
+Each dataset has it's own invalid output `.csv` file, that is generated in the `output/invalid` folder and each record contains a `rejection_reason` column, where it is described why the row was rejected
+
+#### Validation statistics 
+
+The pipeline also generates validation statistic for each dataset. <br>
+The report distinguishes between:
+
+- **input rows** - total number of records read from the source file
+- **valid rows** - records that passed all validation rules
+- **rejected rows** - unique records that failed at least one validation rule
+- **validation failures** - number of times individual rules were violated
+
+**Example of validation statistics:**
+
+```
+{
+    "input rows": 1014,
+    "valid rows": 652,
+    "rejected rows": 362,
+    "validation failures": {
+        "missing_customer_id": 22,
+        "duplicate_customer_id": 48,
+        "missing_customer_name": 35,
+        "missing_email": 15,
+        "invalid_email": 25,
+        "missing_country_": 53,
+        "missing_date": 30,
+        "invalid_date": 246
+    }
+}
+```
+
+A row can fail multiple validation rules. For instance one record can have a missing name, invalid email and invalid date. A record like that is counted once as rejected, but contributes to all three individual validation failure counters. <br>
+This prevents rejected records from being counted more than once.
+
 ### Loading
 
-After the transformation and validation, only valid records are loaded into a MySQL database. <br>
-Each dataset is loaded into a separate table, with a name corresponding to the dataset name.
-Loaded data can then be queried using SQL.
+Before loading the data into MySQL, I created the tables in MySQL Workbench using these statements: <br>
+
+```mysql
+CREATE TABLE customers (
+    customer_id INT NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    country VARCHAR(3) NOT NULL,
+    created_at DATE NOT NULL,
+
+    PRIMARY KEY (customer_id)
+);
+
+CREATE TABLE products (
+    product_id INT NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    category VARCHAR(255) NOT NULL,
+    price DECIMAL(10,2) NOT NULL,
+
+    PRIMARY KEY (product_id)
+);
+
+CREATE TABLE orders (
+    order_id INT NOT NULL,
+    customer_id INT NOT NULL,
+    product_id INT NOT NULL,
+    quantity INT NOT NULL,
+    order_date DATE NOT NULL,
+
+    PRIMARY KEY (order_id, customer_id, product_id),
+
+    FOREIGN KEY (customer_id)
+                    REFERENCES customers(customer_id),
+    FOREIGN KEY (product_id)
+                    REFERENCES products(product_id)
+);
+```
+
+The same statements can be found in the `sql/tables` folder, each in the corresponding `.sql` file.<br>
+
+After the transformation, validation and database / table creation, only valid records are loaded into a MySQL database. <br>
+Each dataset is loaded into a separate table, with a name corresponding to the dataset name. <br>
+When adding data to the database I chose to use the `if_exists ='append'` flag, which appends data to the table instead of dropping and recreating the table every time the pipeline is run.
 
 ### SQL Analysis
 
 We can do some analysis using the cleaned and transformed data from the dataset.
 Here are some of the questions that we can explore, using different queries:
 
-- Which products have been ordered the most?=
+- Top 10 most ordered products of all time.
 - Which customers have placed the most orders?
 - What is the total quantity sold for each product?
-- What is the total revenue by product category
-- Which customers generated the highest revenue
+- What is the total revenue by product category?
+- Which customers generated the highest revenue?
 - How many orders were placed each day?
 - Which products have never been ordered?
+- Which month were the most customers 'created'?
+- Which countries are most customers from?
 
-Example queries are written in the `sql_analysis\` folder
+Example queries are written in the `sql/queries.sql` file
 
 ## Configuration
 Database credentials are stored in environment variables rather than directly in the source code.<br>
@@ -253,20 +318,20 @@ python -m src.main
 There are three individual pipelines, one for each dataset. The pipeline extracts data from the `.csv` file, validates it against specific rules and removes invalid rows into it's own `.csv` files.
 Valid data is then transformed and loaded into MySQL database.<br>
 After the execution of the pipelines the database should be populated with tables and there should be an `output/` folder in the repository.<br>
-Invalid data are stored in `output/invalid` folder and simple reports are generated in the `output/reports` folder.
+Invalid data are stored in `output/invalid/` folder and simple reports are generated in the `output/reports/` folder.
 
 ## Future improvements:
 
 - [ ] containerizing the application with Docker
 - [ ] adding a Docker Compose setup for MySQL
-- [x] adding a CI/CD pipeline with GitHub Actions - *[added on 11.0.2026 - pipeline for auto-pr to `development` branch]*
+- [x] **adding a CI/CD pipeline with GitHub Actions** - *[added on 11.09.2026 - pipeline for auto-pr to `development` branch]*
 - [ ] adding tests using pytest
 - [ ] improving pipeline configuration
 - [ ] adding database schema migrations
 - [ ] adding pipeline execution metrics
 - [ ] scheduling the pipeline
 - [ ] adding monitoring and alerting
-- [x] restrict `master` branch - *[added on 11.09.2026 - `master` branch requires PR before merge]*
+- [x] **restrict `master` branch** - *[added on 11.09.2026 - `master` branch requires PR before merge]*
 
 ## What this project demonstrates:
 

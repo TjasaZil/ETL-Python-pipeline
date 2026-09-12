@@ -1,7 +1,6 @@
 import pandas as pd
 import logging
-from ..country_codes import country_codes
-
+from src.country_codes import country_codes
 #setup logging
 
 logging.basicConfig(level=logging.INFO)
@@ -18,7 +17,7 @@ def iso_country_code(df):
 #standardizes the date format
 def standardize_date_format(df, column):
     try:
-        df[column] = pd.to_datetime(df[column], dayfirst=True, format="%d/%m/%Y")
+        df[column] = pd.to_datetime(df[column], dayfirst=True, format="%d/%m/%Y", errors="coerce")
         return df
     except Exception as e:
         logger.exception(f"There was an error when changing the date format of the data: {e}")
@@ -40,10 +39,11 @@ def lowercase_email(df):
         return df
     except Exception as e:
         logger.exception(f"There was an error when lowercase the string of the data: {e}")
-# change ids from floats to inst
-def float_to_int(df, col):
+
+# check values and change to numeric value what you can -> everything else NaN
+def change_to_num(df, col):
     try:
-        df[col]=df[col].astype(int)
+        df[col]=pd.to_numeric(df[col], errors='coerce')
         return df
     except Exception as e:
         logger.exception(f"There was an error when changing the data type from float to int: {e}")
@@ -56,7 +56,7 @@ def transform_customers(df):
         df = trim_whitespace(df, col="country")
         df = iso_country_code(df)
         df = lowercase_email(df)
-        df = float_to_int(df, col="customer_id")
+        df = change_to_num(df, col="customer_id")
         return df
     except Exception as e:
         logger.exception(f"There was an error when transforming the customer data: {e}")
@@ -65,17 +65,18 @@ def transform_products(df):
     try:
         df = trim_whitespace(df, col="name")
         df = trim_whitespace(df, col="category")
-        df = float_to_int(df, col="product_id")
+        df = change_to_num(df, col="product_id")
+        df = change_to_num(df, col="price")
         return df
     except Exception as e:
         logger.exception(f"There was an error when transforming the product data: {e}")
 
 def transform_orders(df):
     try:
-        df = float_to_int(df, col="order_id")
-        df = float_to_int(df, col="customer_id")
-        df = float_to_int(df, col="product_id")
-        df = float_to_int(df, col="quantity")
+        df = change_to_num(df, col="order_id")
+        df = change_to_num(df, col="customer_id")
+        df = change_to_num(df, col="product_id")
+        df = change_to_num(df, col="quantity")
         return df
     except Exception as e:
         logger.exception(f"There was an error when transforming the order data: {e}")

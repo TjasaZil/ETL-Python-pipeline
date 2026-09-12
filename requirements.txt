@@ -1,4 +1,4 @@
 pandas
+PyMySQL
 sqlalchemy
 python-dotenv
-logging

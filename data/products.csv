@@ -58,7 +58,7 @@ product_id,name,category,price
 57,Organic Vanilla Bean Ice Cream,Food - Frozen Desserts,5.99
 58,Chocolate Coconut Protein Balls,Food - Snacks,2.99
 59,Red Lentils,Food - Grains,1.99
-60,Blueberry Chia Jam,Food - Spreads,4.99
+q,Blueberry Chia Jam,Food - Spreads,4.99
 61,Pumpkin Spice Muffins,Food - Bakery,3.99
 62,Savory Oatmeal Cups,Food - Breakfast,1.99
 63,Dark Chocolate Almond Butter Cups,Food - Snacks,4.99
@@ -127,7 +127,7 @@ product_id,name,category,price
 124,Roasted Vegetable Medley,Food - Frozen Foods,3.99
 125,Veggie Burger Patties,Food - Meat Substitutes,5.99
 126,Organic Tomato Soup,Food - Canned Goods,3.79
-127,Adjustable Kneeling Pad,Garden,18.99
+a,Adjustable Kneeling Pad,Garden,18.99
 128,Insulated Coffee Mug,Kitchen,24.99
 129,Memory Foam Mattress Pad,Home,69.99
 130,Sun-Dried Tomato Pesto,Food - Condiments,4.49
@@ -193,7 +193,7 @@ product_id,name,category,price
 188,Woven Storage Baskets,Home,24.99
 189,,Home,34.99
 190,Classic White T-Shirt,Clothing - Tops,19.99
-191,Marinara Parmesan Baked Ziti,Food - Frozen Meals,8.49
+b,Marinara Parmesan Baked Ziti,Food - Frozen Meals,8.49
 192,Warm Wool Sweater,Clothing - Tops,59.99
 193,Graphic Sweatshirt,,34.99
 194,Peanut Butter Granola,Food - Breakfast,4.99
@@ -273,7 +273,7 @@ product_id,name,category,price
 262,Sweet Potato Fries,Food - Frozen Foods,3.99
 263,Pet Carrier Backpack,Pets,39.99
 264,BBQ Lentil Chips,Food - Snacks,3.49
-265,Canned Sardines,Food - Seafood,3.29
+-,Canned Sardines,Food - Seafood,3.29
 266,Kids' Crafting Station,Toys,
 267,Casual Long Cardigan,,45.99
 268,Two-Tier Fruit Basket,Home,29.99
@@ -354,12 +354,12 @@ product_id,name,category,price
 343,Inflatable Pool Float,Outdoor,29.99
 344,Mushroom Soup (canned),Food - Canned Goods,2.49
 345,Pineapple Chunks (canned),Food - Fruits,2.29
-346,Spicy Italian Sausage,Food - Meat & Seafood,4.99
+346,Spicy Italian Sausage,Food - Meat & Seafood,o
 347,Vegetable Potstickers,Food - Frozen Food,5.99
 348,Olive Oil,Food - Condiments,7.99
 349,Adjustable Bar Stools,Furniture,
 350,Picnic Blanket,Outdoor,29.99
-351,Roasted Garlic,Food - Condiments,4.29
+q,Roasted Garlic,Food - Condiments,4.29
 313,Electric Kettle,Kitchen,39.99
 313,Electric Kettle,Kitchen,39.99
 352,Pretzel Bites,Food - Snacks,4.99
@@ -412,7 +412,7 @@ product_id,name,category,price
 399,Gaming Headset,Gaming,69.99
 400,Chocolate Raspberry Tart,Food - Bakery,9.99
 401,Dried Mango Slices,Food - Snacks,3.49
-402,Lightweight Backpacking Tent,Outdoor,129.99
+402,Lightweight Backpacking Tent,Outdoor,z
 403,Smartphone Stand,,15.49
 404,Lockable Bicycle Chain,Outdoor,19.99
 405,LED Flashing Pet Collar,Pets,14.99
@@ -456,7 +456,7 @@ product_id,name,category,price
 443,,Office,299.99
 444,Hiking Water Bottle with Filter,Outdoor,29.99
 ,Fitbit Activity Tracker,Fitness,99.99
-446,High-Quality Yoga Block,Fitness,12.99
+446,High-Quality Yoga Block,Fitness,-
 447,,Food - Beverages,4.99
 448,Coffee Maker,Kitchen,89.99
 ,Spicy Chicken Wings,Food - Meat,9.99
@@ -498,7 +498,7 @@ product_id,name,category,price
 483,Blackberry Compote,Food - Condiments,5.29
 484,Teriyaki Beef Jerky,Food - Snacks,5.49
 485,Smart LED Desk Lamp,Office,39.99
-486,Organic Sweet Potatoes,Food - Produce,1.99
+486,Organic Sweet Potatoes,Food - Produce,i
 487,Crispy Tofu Bites,Food - Protein,4.99
 488,Garlic Herb Marinade,Food - Marinades,3.29
 489,Paprika,Food - Spices,1.79
@@ -741,7 +741,7 @@ product_id,name,category,price
 723,Roasted Red Pepper Dip,Food - Snacks,3.29
 724,Yoga Strap,Fitness,12.99
 725,Wireless Music Receiver,Audio,19.99
-726,Carrot and Celery Sticks,Food - Produce,2.99
+726,Carrot and Celery Sticks,Food - Produce,-
 727,,Automotive,24.99
 728,Mini Fondue Set,Kitchen,34.99
 729,Tomato Basil Pasta Sauce,Food - Sauces,3.99

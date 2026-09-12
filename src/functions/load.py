@@ -23,7 +23,8 @@ def load_to_sql(df, table_name):
         engine = create_engine(f'mysql+pymysql://{db_user}:{db_password}@{db_host}:{db_port}/{db_database}')
 
         # Writes df into the database
-        df.to_sql(name = f"{table_name}", con=engine, if_exists ='replace', index=False )
+        df.to_sql(name = f"{table_name}", con=engine, if_exists ='append', index=False )
         logger.info(f'Table {table_name} successfully loaded into the database {db_database} as {table_name}')
     except Exception as e:
         logger.exception(f"Something went wrong when loading the table into the database: {e}")
+        raise
