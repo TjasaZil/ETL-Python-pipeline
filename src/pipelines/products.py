@@ -20,10 +20,10 @@ def products_pipeline(file_path):
     invalid_df = add_rejection_reasons(products_df, validated_df)
     save_invalid_data(invalid_df, products_invalid_path)
 
-    report_df = create_report(products_df, validated_df )
+    report_df = create_report(products_df, validated_df, dataset_name="products" )
     save_report(report_df, products_report_path)
 
     #load data to MySQL
     ready_for_db = transformed_df[validated_df["is_valid"]].copy()
-    #print(ready_for_db)
-    #load_to_sql(ready_for_db, table_name="products")
+    load_to_sql(ready_for_db, table_name="products")
+    return ready_for_db

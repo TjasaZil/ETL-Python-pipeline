@@ -29,7 +29,7 @@ def save_invalid_data(df, filepath):
         logger.exception(f"Problems with saving invalid data: {e}")
 
 #creates a python dictionary from the invalid data
-def create_report(df, validation_results):
+def create_report(df, validation_results, dataset_name):
     try:
         input_rows = len(df) #this is all of the rows in the dataset
         valid_rows = int((validation_results["is_valid"]).sum()) #all rows without any errors
@@ -40,10 +40,11 @@ def create_report(df, validation_results):
                 continue
             validation_failures[column] = int(validation_results[column].sum()) #counts validation errors
         report={
-            "input rows": input_rows,
-            "valid rows": valid_rows,
-            "rejected rows": rejected_rows,
-            "validation failures": validation_failures
+            "dataset": dataset_name,
+            "input_rows": input_rows,
+            "valid_rows": valid_rows,
+            "rejected_rows": rejected_rows,
+            "validation_failures": validation_failures
         }
         return report
     except Exception as e:

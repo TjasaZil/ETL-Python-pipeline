@@ -49,6 +49,13 @@ def validate_positives(df, column):
     except Exception as e:
         logger.exception(f"There was an error when checking the negative number:{e}")
 
+#check if customer_id and product_id are valid in orders
+def id_existing(df1, df2, column):
+    try:
+        valid_ids = df1[column].unique()
+        return df2[column].isin(valid_ids)
+    except Exception as e:
+        logger.exception(f" There was a problem when trying to validate id: {e}")
 
 def validate_customers(df):
     try:
@@ -80,12 +87,14 @@ def validate_products(df):
     except Exception as e:
         logger.exception(f" There was a problem when trying to validate products: {e}")
 
-def validate_orders(df):
+def validate_orders(df, df_existing1, df_existing2):
     try:
         validation_results = pd.DataFrame(index = df.index)
         validation_results["missing_order_id"] = ~check_for_null(df, column="order_id")
         validation_results["missing_customer_id"]= ~check_for_null(df, column="customer_id")
+        validation_results["customer_does_not_exist"] = ~id_existing(df_existing1, df, column="customer_id")
         validation_results["missing_product_id"]= ~check_for_null(df, column="product_id")
+        validation_results["product_does_not_exist"]= ~id_existing(df_existing2, df, column="product_id")
         validation_results["missing_quantity"]= ~check_for_null(df, column ="quantity")
         validation_results["invalid_quantity"] = ~validate_positives(df, column="quantity")
         validation_results["missing_order_date"]= ~check_for_null(df, column="order_date")

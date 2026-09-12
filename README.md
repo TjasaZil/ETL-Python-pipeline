@@ -53,7 +53,12 @@ ETL-Python-pipeline/
 |  |  |-- products_report.json
 |
 |-- sql_analysis/
-|  |-- example.sql
+|  |-- tables/
+|  |  |-- customers.sql
+|  |  |-- orders.sql
+|  |  |-- products.sql
+|  |-- database.sql
+|  |-- queries.sql
 |
 |-- src/
 |  |-- functions/
@@ -68,11 +73,12 @@ ETL-Python-pipeline/
 |  |  |-- products.py
 |  |-- country_codes.py
 |  |-- main.py
-|  |--- paths.py
+|  |-- paths.py
 |
 |-- .env.example
 |-- .gitignore
 |-- README.md
+|-- requirements.txt
 
 ```
 
@@ -149,8 +155,10 @@ After transformation, the data is validated against rules, specific to each data
 - `order_id` must be a numeric value
 - `customer_id` must not be null
 - `customer_id` must be a numeric value
+- `customer_id` must exist in the 'customer' table
 - `product_id` must not be null
 - `product_id` must be a numeric value
+- `product_id` must exist in the 'products' table
 - `quantity` must not be NULL
 - `quantity` must be greater than 0
 - `quantity` must be a numeric value
@@ -179,13 +187,17 @@ The report distinguishes between:
 ```
 {
     "input rows": 1014,
-    "valid rows": 672,
-    "rejected rows": 342,
+    "valid rows": 652,
+    "rejected rows": 362,
     "validation failures": {
-        "missing_values": 115,
+        "missing_customer_id": 22,
+        "duplicate_customer_id": 48,
+        "missing_customer_name": 35,
+        "missing_email": 15,
         "invalid_email": 25,
-        "invalid_date": 248,
-        "duplicate_customer_id": 48
+        "missing_country_": 53,
+        "missing_date": 30,
+        "invalid_date": 246
     }
 }
 ```
@@ -195,9 +207,49 @@ This prevents rejected records from being counted more than once.
 
 ### Loading
 
-After the transformation and validation, only valid records are loaded into a MySQL database. <br>
-Each dataset is loaded into a separate table, with a name corresponding to the dataset name.
-Loaded data can then be queried using SQL.
+Before loading the data into MySQL, I created the tables in MySQL Workbench using these statements: <br>
+
+```mysql
+CREATE TABLE customers (
+    customer_id INT NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    country VARCHAR(3) NOT NULL,
+    created_at DATE NOT NULL,
+
+    PRIMARY KEY (customer_id)
+);
+
+CREATE TABLE products (
+    product_id INT NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    category VARCHAR(255) NOT NULL,
+    price DECIMAL(10,2) NOT NULL,
+
+    PRIMARY KEY (product_id)
+);
+
+CREATE TABLE orders (
+    order_id INT NOT NULL,
+    customer_id INT NOT NULL,
+    product_id INT NOT NULL,
+    quantity INT NOT NULL,
+    order_date DATE NOT NULL,
+
+    PRIMARY KEY (order_id, customer_id, product_id),
+
+    FOREIGN KEY (customer_id)
+                    REFERENCES customers(customer_id),
+    FOREIGN KEY (product_id)
+                    REFERENCES products(product_id)
+);
+```
+
+The same statements can be found in the `sql/tables` folder, each in the corresponding `.sql` file.<br>
+
+After the transformation, validation and database / table creation, only valid records are loaded into a MySQL database. <br>
+Each dataset is loaded into a separate table, with a name corresponding to the dataset name. <br>
+When adding data to the database I chose to use the `if_exists ='append'` flag, which appends data to the table instead of dropping and recreating the table every time the pipeline is run.
 
 ### SQL Analysis
 
@@ -214,7 +266,7 @@ Here are some of the questions that we can explore, using different queries:
 - Which month were the most customers 'created'?
 - Which countries are most customers from?
 
-Example queries are written in the `sql_analysis/` folder
+Example queries are written in the `sql/queries.sql` file
 
 ## Configuration
 Database credentials are stored in environment variables rather than directly in the source code.<br>
