@@ -323,6 +323,8 @@ Invalid data are stored in `output/invalid/` folder and simple reports are gener
 ## Future improvements:
 
 - [ ] migrate input data from .csv to sqlite .db
+- [ ] migrate output data from .csv and .json to sqlite .db
+- [ ] migrate from workbench to sqlite .db
 - [ ] containerizing the application with Docker
 - [ ] adding a Docker Compose setup for MySQL
 - [x] **adding a CI/CD pipeline with GitHub Actions** - *[added on 11.09.2026 - pipeline for auto-pr to `development` branch]*
@@ -345,6 +347,6 @@ This project was built to demonstrate practical understanding of several fundame
 - Handling invalid data
 - Designing reusable pipeline components
 - Working with relational databases
-- Loading data into MySQL
+- Loading data into MySQL / sqlite
 - Using Git and GitHub
 - Documenting a data pipeline
