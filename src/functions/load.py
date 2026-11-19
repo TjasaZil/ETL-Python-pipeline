@@ -1,30 +1,71 @@
-#za loadanje v bazo
-import os
-from sqlalchemy import create_engine
-from dotenv import load_dotenv
+
 import logging
 
-#setup logging
-logging.basicConfig(level=logging.INFO)
+import pandas as pd
+from sqlalchemy import create_engine
+
+from src.paths import ANALYTICS_DB, QUALITY_DB
+
 logger = logging.getLogger(__name__)
 
-def load_to_sql(df, table_name):
-    #getting env variables for the database where I want to load into
+ALLOWED_TABLES = {"customers", "products", "orders"}
+
+
+def load_to_sqlite(
+    df: pd.DataFrame,
+    table_name: str,
+    database_path,
+):
+    if table_name not in ALLOWED_TABLES and not table_name.endswith("_invalid"):
+        raise ValueError(f"Unsupported table: {table_name}")
+
+    engine = create_engine(
+        f"sqlite:///{database_path.as_posix()}"
+    )
+
     try:
-        load_dotenv()
-        db_user = os.getenv('USER')
-        db_password = os.getenv('PASSWORD')
-        db_host = os.getenv('HOST')
-        db_port = os.getenv('PORT')
-        db_database = os.getenv('DATABASE')
+        df.to_sql(
+            name=table_name,
+            con=engine,
+            if_exists="append",
+            index=False,
+        )
 
-        #Creating the SQLAlchemy engine
-        # The format is: mysql+pymysql://user:password@host:port/database
-        engine = create_engine(f'mysql+pymysql://{db_user}:{db_password}@{db_host}:{db_port}/{db_database}')
+        logger.info(
+            "Loaded %s rows into table %s",
+            len(df),
+            table_name,
+        )
 
-        # Writes df into the database
-        df.to_sql(name = f"{table_name}", con=engine, if_exists = "append", index=False )
-        logger.info(f'Table {table_name} successfully loaded into the database {db_database} as {table_name}')
-    except Exception as e:
-        logger.exception(f"Something went wrong when loading the table into the database: {e}")
+    except Exception:
+        logger.exception(
+            "Failed to load table %s into SQLite",
+            table_name,
+        )
         raise
+
+    finally:
+        engine.dispose()
+
+
+def load_valid_data(df, table_name):
+    if table_name not in ALLOWED_TABLES:
+        raise ValueError(f"Unsupported table: {table_name}")
+
+    load_to_sqlite(
+        df,
+        table_name,
+        ANALYTICS_DB,
+    )
+
+
+def load_invalid_data(df, table_name):
+    if table_name not in ALLOWED_TABLES:
+        raise ValueError(f"Unsupported table: {table_name}")
+
+    load_to_sqlite(
+        df,
+        f"{table_name}_invalid",
+        QUALITY_DB,
+    )
+

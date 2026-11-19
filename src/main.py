@@ -1,12 +1,33 @@
 # Automating ETL Process wth Python
+
+import logging
+
 from src.pipelines.customers import customers_pipeline
 from src.pipelines.products import products_pipeline
 from src.pipelines.orders import orders_pipeline
-from src.paths import customers_path, orders_path, products_path
 
-if __name__ == '__main__':
-    df_1=customers_pipeline(customers_path)
-    df_2=products_pipeline(products_path)
-    orders_pipeline(orders_path, df_1, df_2)
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+
+def main():
+    logger.info("Starting ETL pipeline")
+
+    # Read from source.db, transform, validate and load valid records
+    df_customers = customers_pipeline()
+    df_products = products_pipeline()
+    df_orders = orders_pipeline(df_customers, df_products)
+
+    logger.info(
+        "ETL completed. Loaded %s customers, %s products and %s orders.",
+        len(df_customers),
+        len(df_products),
+        len(df_orders),
+    )
+
+
+if __name__ == "__main__":
+    main()
+
 
 
