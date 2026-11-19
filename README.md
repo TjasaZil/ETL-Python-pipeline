@@ -1,8 +1,10 @@
 # ETL Python Pipeline
 
-A Python-based ETL pipeline for extracting data from CSV files, transforming and validating the data and loading clean records into a MySQL database.
+A Python-based ETL pipeline for extracting data from SQLite, transforming and validating the data and loading clean 
+records into a SQLite database.
 
-The project is designed as a small-scale data engineering project that demonstrates fundamental ETL concepts, data quality checks, error handling, logging and SQL-based data storage.
+The project is designed as a small-scale data engineering project that demonstrates fundamental ETL concepts, 
+data quality checks, error handling, logging and SQL-based data storage.
 
 ## Project overview
 
@@ -13,16 +15,22 @@ The pipeline processes three datasets:
 - Orders - customer orders and purchased products
 
 Each dataset goes through its own ETL pipeline.
-The goal is to ensure that only valid and cleaned data is loaded into the database, while invalid records are removed and preserved separately.
+The goal is to ensure that only valid and cleaned data is loaded into the database, while invalid records are 
+removed and preserved separately.
+
+This project uses three SQLite databases:
+- source.db: Stores the original data
+- analytics.db: Stores transformed and validated records for analysis
+- quality.db: Stores rejected records and validation reports
+
+JSON validation reports are also generated in the `output/reports/` directory.
 
 ## Technologies:
 
 - Python
 - Pandas
-- MySQL
+- SQLite
 - SQLAlchemy
-- PyMySQL
-- Python-dotenv
 - Git / GitHub
 - Logging
 - pathlib
@@ -37,27 +45,18 @@ ETL-Python-pipeline/
 |  |  |-- allow-merge-to-main.yml
 |  |  |-- auto-pr.yml
 | 
-|-- data/
-|  |-- customers.csv
-|  |-- orders.csv
-|  |-- products.csv
+|-- databases/
+|  |-- analytics.db
+|  |-- quality.db
+|  |-- source.db
 |
 |-- output/
-|  |-- invalid/
-|  |  |-- customers_invalid.csv
-|  |  |-- orders_invalid.csv
-|  |  |-- products_invalid.csv
 |  |-- reports/
 |  |  |-- customers_report.json
 |  |  |-- orders_report.json
 |  |  |-- products_report.json
 |
 |-- sql_analysis/
-|  |-- tables/
-|  |  |-- customers.sql
-|  |  |-- orders.sql
-|  |  |-- products.sql
-|  |-- database.sql
 |  |-- queries.sql
 |
 |-- src/
@@ -71,23 +70,44 @@ ETL-Python-pipeline/
 |  |  |-- customers.py
 |  |  |-- orders.py
 |  |  |-- products.py
+|  |-- scripts/
+|  |  |-- ingest.py
 |  |-- country_codes.py
 |  |-- main.py
 |  |-- paths.py
 |
-|-- .env.example
+|-- .gitattributes
 |-- .gitignore
 |-- README.md
 |-- requirements.txt
 
 ```
+***Note: SQLite database files are created locally when the corresponding scripts run. 
+The exact repository structure may differ slightly depending on which files are committed to Git.***
 
 ## ETL Process
 
+### Ingestion
+***(This step was already done in advance. there are no csv files in this repo from which user can ingest from. 
+All of the data is in the `.db` files).***
+
+The initial ingestion step imports the three source CSV files from the `data/` directory into SQLite.
+
+The `src/scripts/ingest.py` script reads the CSV files using Pandas and writes their contents into the corresponding tables in source.db:
+
+- customers
+- products
+- orders
+
+This is a separate step from the main ETL pipeline. After ingestion, 
+the ETL pipelines extract data from SQLite rather than reading the CSV files directly.
+
 ### Extract
 
-The extraction step reads the source CSV files using Pandas.</br>
-The files from where we are extracting the data are in the `data/` folder
+The extraction stage reads data from `source.db` using Pandas and SQLAlchemy.
+
+Each dataset is extracted independently using the reusable `extract_data()` function. Only explicitly 
+allowed table names can be queried.
 
 ### Transform
 
@@ -169,13 +189,20 @@ Validation is performed independently for each rule so that a single record can 
 
 ### Invalid data handling
 
-Invalid records are not just deleted.<br>
-Each dataset has it's own invalid output `.csv` file, that is generated in the `output/invalid` folder and each record contains a `rejection_reason` column, where it is described why the row was rejected
+Invalid records are not simply discarded. They are preserved in the `quality.db` database in separate tables:
+
+- customers_invalid
+- products_invalid
+- orders_invalid
+
+Each rejected record includes a `rejection_reasons` field describing the validation rules it failed.
+
+This makes it possible to investigate data quality issues without contaminating the analytics database.
 
 #### Validation statistics 
 
-The pipeline also generates validation statistic for each dataset. <br>
-The report distinguishes between:
+For each dataset, the pipeline generates a JSON report in `output/reports/.` </br>
+Validation reports are also stored in `quality.db.` </br>
 
 - **input rows** - total number of records read from the source file
 - **valid rows** - records that passed all validation rules
@@ -207,54 +234,25 @@ This prevents rejected records from being counted more than once.
 
 ### Loading
 
-Before loading the data into MySQL, I created the tables in MySQL Workbench using these statements: <br>
+Valid records are loaded into `analytics.db` using SQLAlchemy and Pandas.
 
-```mysql
-CREATE TABLE customers (
-    customer_id INT NOT NULL,
-    name VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL,
-    country VARCHAR(3) NOT NULL,
-    created_at DATE NOT NULL,
+The database contains three tables:
+- customers
+- products
+- orders
 
-    PRIMARY KEY (customer_id)
-);
+The pipeline uses SQLite, so no separate database server or MySQL Workbench installation is required.
 
-CREATE TABLE products (
-    product_id INT NOT NULL,
-    name VARCHAR(255) NOT NULL,
-    category VARCHAR(255) NOT NULL,
-    price DECIMAL(10,2) NOT NULL,
+The analytics database is kept separate from the source and data quality databases, allowing analytical 
+queries to operate on cleaned records while preserving rejected records for investigation.
 
-    PRIMARY KEY (product_id)
-);
-
-CREATE TABLE orders (
-    order_id INT NOT NULL,
-    customer_id INT NOT NULL,
-    product_id INT NOT NULL,
-    quantity INT NOT NULL,
-    order_date DATE NOT NULL,
-
-    PRIMARY KEY (order_id, customer_id, product_id),
-
-    FOREIGN KEY (customer_id)
-                    REFERENCES customers(customer_id),
-    FOREIGN KEY (product_id)
-                    REFERENCES products(product_id)
-);
-```
-
-The same statements can be found in the `sql/tables` folder, each in the corresponding `.sql` file.<br>
-
-After the transformation, validation and database / table creation, only valid records are loaded into a MySQL database. <br>
-Each dataset is loaded into a separate table, with a name corresponding to the dataset name. <br>
-When adding data to the database I chose to use the `if_exists ='append'` flag, which appends data to the table instead of dropping and recreating the table every time the pipeline is run.
+Note: The current loading implementation uses append-based inserts. Repeated runs may duplicate data or 
+encounter uniqueness conflicts unless the tables are reset or an appropriate upsert strategy is implemented.
 
 ### SQL Analysis
 
-We can do some analysis using the cleaned and transformed data from the dataset.
-Here are some of the questions that we can explore, using different queries:
+The cleaned data in `analytics.db` can be queried using SQL.
+Example analytical questions include:
 
 - Top 10 most ordered products of all time.
 - Which customers have placed the most orders?
@@ -268,28 +266,18 @@ Here are some of the questions that we can explore, using different queries:
 
 Example queries are written in the `sql/queries.sql` file
 
-## Configuration
-Database credentials are stored in environment variables rather than directly in the source code.<br>
-This is an example of the `.env` file:
-```dotenv
-USER='your_username'
-PASSWORD='your_password'
-HOST='localhost'
-PORT=3306
-DATABASE='your_database'
-```
-Personal `.env` file is excluded from Git, using `.gitignore.`<br>
-An `.env.example` file is included in the repository to show the required configuration without exposing credentials.
-
 ## Installation 
 Prerequisites:
-- MySQL installed 
-- Python installed
-- Git installed
+- Python 3.10 or later recommended 
+- Git 
+- A SQLite-compatible database viewer (optional)
+
+SQLite is included with standard Python installations, so a separate database server is not required.
 
 Clone the repository and open it with your code editor of choice.
 ```
-https://github.com/TjasaZil/ETL-Python-pipeline.git
+git clone https://github.com/TjasaZil/ETL-Python-pipeline.git
+cd ETL-Python-pipeline
 ```
 Create a virtual environment
 ```
@@ -306,23 +294,39 @@ source venv/bin/activate
 ```
 Install dependencies
 ```
-pip install -r requirements.txt
+python -m install -r requirements.txt
 ```
-Rename `.env.example` file into `.env` and write in your MySQL credentials.<br>
 
-Run the pipelines
+Run the ETL pipeline
 ```
 python -m src.main
 ```
 
-There are three individual pipelines, one for each dataset. The pipeline extracts data from the `.csv` file, validates it against specific rules and removes invalid rows into it's own `.csv` files.
-Valid data is then transformed and loaded into MySQL database.<br>
-After the execution of the pipelines the database should be populated with tables and there should be an `output/` folder in the repository.<br>
-Invalid data are stored in `output/invalid/` folder and simple reports are generated in the `output/reports/` folder.
+The main pipeline:
+
+Extracts customers, products, and orders from `source.db`.
+Transforms and validates each dataset.
+Stores invalid records and validation reports in `quality.db`.
+Generates JSON validation reports in `output/reports/`.
+Loads valid records into `analytics.db`.
+The pipeline logs the number of extracted, rejected, and loaded records.
+
+Inspect the results:
+
+Open the following files with a SQLite-compatible database viewer:
+
+- `databases/source.db`
+- `databases/analytics.db`
+- `databases/quality.db`
+
+You can also inspect the JSON reports in `output/reports/`.
+
 
 ## Future improvements:
 
-- [ ] migrate input data from .csv to sqlite .db
+- [x] **migrate input data from .csv to sqlite .db** - *[added on 19.11.2026 - pipeline for auto-pr to `development` branch]*
+- [x] **migrate output data from .csv and .json to sqlite .db** - *[added on 19.11.2026 - pipeline for auto-pr to `development` branch]*
+- [ ] migrate from workbench to sqlite .db
 - [ ] containerizing the application with Docker
 - [ ] adding a Docker Compose setup for MySQL
 - [x] **adding a CI/CD pipeline with GitHub Actions** - *[added on 11.09.2026 - pipeline for auto-pr to `development` branch]*
@@ -345,6 +349,6 @@ This project was built to demonstrate practical understanding of several fundame
 - Handling invalid data
 - Designing reusable pipeline components
 - Working with relational databases
-- Loading data into MySQL
+- Loading data into SQLite
 - Using Git and GitHub
 - Documenting a data pipeline
